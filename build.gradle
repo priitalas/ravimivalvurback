@@ -29,6 +29,24 @@ dependencies {
 	runtimeOnly 'org.postgresql:postgresql'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	// for testing
+	testImplementation 'org.mockito:mockito-core'
+	testImplementation 'com.h2database:h2'
+
+
+	// swagger
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.4.0'
+
+	// MapStruct
+	implementation 'org.mapstruct:mapstruct:1.5.5.Final'
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+
+}
+
+compileJava {
+	// Ignoring Unmapped Properties (no error, no warning), Inject Spring Components into the Mapper
+	options.compilerArgs += ['-Amapstruct.unmappedTargetPolicy=IGNORE', '-Amapstruct.defaultComponentModel=spring']
 }
 
 tasks.named('test') {
