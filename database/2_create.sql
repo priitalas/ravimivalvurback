@@ -65,7 +65,7 @@ CREATE TABLE medication_time (
                                  medication_plan_id int  NOT NULL,
                                  slot_start time  NOT NULL,
                                  slot_end time  NOT NULL,
-                                 quantity decimal(2,100)  NOT NULL,
+                                 quantity decimal(4,2)  NOT NULL,
                                  CONSTRAINT medication_time_pk PRIMARY KEY (id)
 );
 
