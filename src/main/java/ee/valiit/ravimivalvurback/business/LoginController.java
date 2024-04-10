@@ -10,11 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class LoginController {
 
     private LoginService loginService;
-
     @GetMapping ("/login")
-    public void login(@RequestParam String username, @RequestParam String password) {
+
+    public void login(@RequestParam String username, @RequestParam String password){
 
     }
-
 
 }
