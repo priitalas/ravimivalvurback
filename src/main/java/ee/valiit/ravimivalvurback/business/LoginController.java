@@ -10,13 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @AllArgsConstructor
 public class LoginController {
+
     private LoginService loginService;
 
-@GetMapping("/login")
-public LoginResponse login(@RequestParam String username, @RequestParam String password){
-    loginService.login(username, password);
-    LoginResponse loginResponse = new LoginResponse();
-    return loginResponse;
+    @GetMapping("/login")
+    public LoginResponse login(@RequestParam String username, @RequestParam String password) {
+        loginService.login(username, password);
+        LoginResponse loginResponse = new LoginResponse();
+        return loginResponse;
 
     }
 

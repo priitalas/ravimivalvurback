@@ -6,15 +6,15 @@ import ee.valiit.ravimivalvurback.domain.user.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 @AllArgsConstructor
 public class LoginService {
+
     private UserRepository userRepository;
 
     public void login(String username, String password) {
-        User user = userRepository.findUserBy(username, password, "A");
+        User user = userRepository.findAuthorizedUser(username, password);
+
 
         LoginResponse loginResponse = new LoginResponse();
         loginResponse.setUserId(user.getId());
