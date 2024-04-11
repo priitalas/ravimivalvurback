@@ -11,15 +11,11 @@ import java.util.Optional;
 @Service
 @AllArgsConstructor
 public class LoginService {
+
     private UserRepository userRepository;
 
     public void login(String username, String password) {
-        User user = userRepository.findUserBy(username, password, "A");
-
-        LoginResponse loginResponse = new LoginResponse();
-        loginResponse.setUserId(user.getId());
-        loginResponse.setRoleName(user.getRole().getName());
-        loginResponse.setUserStatus(user.getStatus());
+        Optional<User> user = userRepository.findAuthorizedUser(username, password);
 
     }
 }
