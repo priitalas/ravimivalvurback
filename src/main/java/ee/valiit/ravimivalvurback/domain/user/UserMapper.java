@@ -1,5 +1,6 @@
 package ee.valiit.ravimivalvurback.domain.user;
 
+import ee.valiit.ravimivalvurback.business.dto.LoginResponse;
 import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)

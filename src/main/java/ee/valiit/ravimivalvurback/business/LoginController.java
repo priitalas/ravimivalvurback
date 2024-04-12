@@ -1,7 +1,7 @@
 package ee.valiit.ravimivalvurback.business;
 
 
-import ee.valiit.ravimivalvurback.domain.user.LoginResponse;
+import ee.valiit.ravimivalvurback.business.dto.LoginResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
