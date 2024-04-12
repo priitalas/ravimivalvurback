@@ -14,6 +14,7 @@ import java.time.LocalTime;
 @Table(name = "medication_time", schema = "ravim")
 public class MedicationTime {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 

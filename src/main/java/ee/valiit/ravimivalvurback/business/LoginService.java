@@ -20,9 +20,7 @@ public class LoginService {
     public LoginResponse login(String username, String password) {
         Optional<User> optionalUser = userRepository.findAuthorizedUser(username, password);
         User user = ValidationService.getValidAuthorizedUser(optionalUser);
-
         LoginResponse loginResponse = userMapper.toLoginResponse(user);
         return loginResponse;
-
     }
 }

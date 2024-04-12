@@ -15,10 +15,6 @@ public class LoginController {
 
     @GetMapping("/login")
     public LoginResponse login(@RequestParam String username, @RequestParam String password) {
-       return loginService.login(username, password);
-    //   LoginResponse loginResponse = new LoginResponse();
-      //  return loginResponse;
-
+        return loginService.login(username, password);
     }
-
 }
