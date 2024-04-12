@@ -1,6 +1,8 @@
 package ee.valiit.ravimivalvurback.business.dto;
 
-import ee.valiit.ravimivalvurback.domain.user.User;
+import ee.valiit.ravimivalvurback.domain.user.Contact;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,15 +10,16 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- * DTO for {@link User}
+ * DTO for {@link Contact}
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class LoginResponse implements Serializable {
+public class ContactInfo implements Serializable {
     private Integer userId;
-    private String roleName;
+    @NotNull
+    @Size(max = 255)
     private String firstName;
     private String lastName;
-    private String userStatus;
+    private String email;
 }
