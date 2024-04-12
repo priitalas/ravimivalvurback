@@ -1,4 +1,4 @@
-package ee.valiit.ravimivalvurback.business.dto;
+package ee.valiit.ravimivalvurback.business.registration.dto;
 
 import ee.valiit.ravimivalvurback.domain.user.Contact;
 import jakarta.validation.constraints.NotNull;
