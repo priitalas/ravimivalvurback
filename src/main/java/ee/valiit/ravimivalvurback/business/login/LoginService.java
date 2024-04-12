@@ -1,6 +1,6 @@
-package ee.valiit.ravimivalvurback.business;
+package ee.valiit.ravimivalvurback.business.login;
 
-import ee.valiit.ravimivalvurback.business.dto.LoginResponse;
+import ee.valiit.ravimivalvurback.business.login.dto.LoginResponse;
 import ee.valiit.ravimivalvurback.domain.user.User;
 import ee.valiit.ravimivalvurback.domain.user.UserMapper;
 import ee.valiit.ravimivalvurback.domain.user.UserRepository;

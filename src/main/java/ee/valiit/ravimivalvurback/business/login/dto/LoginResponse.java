@@ -1,4 +1,4 @@
-package ee.valiit.ravimivalvurback.business.dto;
+package ee.valiit.ravimivalvurback.business.login.dto;
 
 import ee.valiit.ravimivalvurback.domain.user.User;
 import lombok.AllArgsConstructor;

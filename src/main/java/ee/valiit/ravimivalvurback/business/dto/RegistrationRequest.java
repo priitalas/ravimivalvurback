@@ -15,11 +15,12 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ContactInfo implements Serializable {
-    private Integer userId;
-    @NotNull
-    @Size(max = 255)
+public class RegistrationRequest implements Serializable {
     private String firstName;
     private String lastName;
+    private String username;
     private String email;
+    private String password;
+    private Integer roleId;
+
 }
