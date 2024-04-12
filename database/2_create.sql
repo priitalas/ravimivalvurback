@@ -7,6 +7,8 @@ CREATE TABLE contact (
                          id serial  NOT NULL,
                          user_id int  NOT NULL,
                          email varchar(255)  NOT NULL,
+                         first_name varchar(255)  NOT NULL,
+                         last_name varchar(255)  NOT NULL,
                          CONSTRAINT contact_pk PRIMARY KEY (id)
 );
 

@@ -12,6 +12,7 @@ import lombok.Setter;
 @Table(name = "\"user\"", schema = "ravim")
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 

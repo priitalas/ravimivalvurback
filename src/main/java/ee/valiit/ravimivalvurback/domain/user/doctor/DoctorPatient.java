@@ -12,6 +12,7 @@ import lombok.Setter;
 @Table(name = "doctor_patient", schema = "ravim")
 public class DoctorPatient {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
