@@ -20,7 +20,7 @@ public class LoginService {
         Optional<User> optionalUser = userRepository.findAuthorizedUser(username, password);
         User user = ValidationService.getValidAuthorizedUser(optionalUser);
         LoginResponse loginResponse = userMapper.toLoginResponse(user);
-        Role role = roleRepository.getReferenceById(user.getId());
+        Role role = roleRepository.findUserRole(user.getRole().getId(), user.getRole().getName());
         loginResponse.setRoleName(role.getName());
         return loginResponse;
     }
