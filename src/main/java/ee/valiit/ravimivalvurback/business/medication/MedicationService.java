@@ -34,6 +34,7 @@ public class MedicationService {
     }
 
     public void addMedicationImage(MedicationInfo medicationInfo, Medication medication) {
+
        MedicationImage medicationImage = medicationImageMapper.toMedicationImage(medicationInfo);
        medicationImage.setMedication(medication);
        medicationImageRepository.save(medicationImage);
