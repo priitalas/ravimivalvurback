@@ -1,4 +1,4 @@
-package ee.valiit.ravimivalvurback.domain.medication;
+package ee.valiit.ravimivalvurback.domain.medication.medicationimage;
 
 import ee.valiit.ravimivalvurback.domain.medication.Medication;
 import jakarta.persistence.*;
@@ -18,8 +18,8 @@ public class MedicationImage {
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "medical_id", nullable = false)
-    private Medication medical;
+    @JoinColumn(name = "medication_id", nullable = false)
+    private Medication medication;
 
     @NotNull
     @Column(name = "data", nullable = false)

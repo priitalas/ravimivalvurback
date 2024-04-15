@@ -44,7 +44,7 @@ CREATE TABLE medication (
 -- Table: medication_image
 CREATE TABLE medication_image (
                                   id serial  NOT NULL,
-                                  medical_id int  NOT NULL,
+                                  medication_id int  NOT NULL,
                                   data bytea  NOT NULL,
                                   CONSTRAINT medication_image_pk PRIMARY KEY (id)
 );
@@ -133,7 +133,7 @@ ALTER TABLE logbook ADD CONSTRAINT logbook_medication_plan
 
 -- Reference: medical_image_medical (table: medication_image)
 ALTER TABLE medication_image ADD CONSTRAINT medical_image_medical
-    FOREIGN KEY (medical_id)
+    FOREIGN KEY (medication_id)
         REFERENCES medication (id)
         NOT DEFERRABLE
             INITIALLY IMMEDIATE
@@ -202,12 +202,6 @@ ALTER TABLE "user" ADD CONSTRAINT user_role
         NOT DEFERRABLE
             INITIALLY IMMEDIATE
 ;
-
-INSERT INTO ravim.medication (id, unit_id, name, note, description, status) VALUES (1, 1, 'Aspirin', 'peale sööki', 'valuvaigisti, palaviku alandaja', 'A');
-INSERT INTO ravim.medication (id, unit_id, name, note, description, status) VALUES (2, 2, 'Prospan', null, 'köhasiirup', 'A');
-
-INSERT INTO ravim.unit (id, name) VALUES (1, 'tablett');
-INSERT INTO ravim.unit (id, name) VALUES (2, 'ml');
 
 
 -- End of file.
