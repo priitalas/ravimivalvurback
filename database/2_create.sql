@@ -203,5 +203,12 @@ ALTER TABLE "user" ADD CONSTRAINT user_role
             INITIALLY IMMEDIATE
 ;
 
+INSERT INTO ravim.medication (id, unit_id, name, note, description, status) VALUES (1, 1, 'Aspirin', 'peale sööki', 'valuvaigisti, palaviku alandaja', 'A');
+INSERT INTO ravim.medication (id, unit_id, name, note, description, status) VALUES (2, 2, 'Prospan', null, 'köhasiirup', 'A');
+
+INSERT INTO ravim.unit (id, name) VALUES (1, 'tablett');
+INSERT INTO ravim.unit (id, name) VALUES (2, 'ml');
+
+
 -- End of file.
 
