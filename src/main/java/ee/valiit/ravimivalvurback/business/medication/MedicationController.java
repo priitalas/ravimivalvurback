@@ -1,9 +1,9 @@
 package ee.valiit.ravimivalvurback.business.medication;
 
+import ee.valiit.ravimivalvurback.business.medication.dto.MedicineInfo;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @AllArgsConstructor
@@ -34,5 +34,11 @@ public class MedicationController {
     // todo: peale mappimist on vaja külge panna ka medication objekt (foreing key)
     // todo: salvesta see rida andmebaasi
     // todo: FINITO
+
+    @PostMapping("/medication")
+    public void addNewMedicine(@RequestBody @Valid MedicineInfo medicineInfo) {
+        medicationService.addNewMedicine(medicineInfo);
+
+    }
 
 }
