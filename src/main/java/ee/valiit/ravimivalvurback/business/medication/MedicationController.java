@@ -1,6 +1,6 @@
 package ee.valiit.ravimivalvurback.business.medication;
 
-import ee.valiit.ravimivalvurback.business.medication.dto.MedicineInfo;
+import ee.valiit.ravimivalvurback.business.medication.dto.MedicationInfo;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -36,8 +36,8 @@ public class MedicationController {
     // todo: FINITO
 
     @PostMapping("/medication")
-    public void addNewMedicine(@RequestBody @Valid MedicineInfo medicineInfo) {
-        medicationService.addNewMedicine(medicineInfo);
+    public void addNewMedicine(@RequestBody @Valid MedicationInfo medicationInfo) {
+        medicationService.addNewMedication(medicationInfo);
 
     }
 
