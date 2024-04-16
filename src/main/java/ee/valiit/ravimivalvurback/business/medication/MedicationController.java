@@ -15,12 +15,12 @@ public class MedicationController {
     private MedicationService medicationService;
 
     // todo: teeme hiljem
-    @GetMapping("/medications")
+    @GetMapping("/medications/patient")
     public void findPatientMedications(@RequestParam Integer patientId) {
         medicationService.findPatientMedications(patientId);
     }
 
-    @PostMapping("/add-medication")
+    @PostMapping("/medication")
     public void addNewMedication(@RequestBody @Valid MedicationInfo medicationInfo) {
         medicationService.addNewMedication(medicationInfo);
     }
