@@ -21,7 +21,7 @@ public class MedicationController {
     }
 
     @PostMapping("/add-medication")
-    public void addNewMedicine(@RequestBody @Valid MedicationInfo medicationInfo) {
+    public void addNewMedication(@RequestBody @Valid MedicationInfo medicationInfo) {
         medicationService.addNewMedication(medicationInfo);
     }
 
