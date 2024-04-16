@@ -1,4 +1,4 @@
-package ee.valiit.ravimivalvurback.domain.user;
+package ee.valiit.ravimivalvurback.domain.user.contact;
 
 import ee.valiit.ravimivalvurback.domain.user.User;
 import jakarta.persistence.*;

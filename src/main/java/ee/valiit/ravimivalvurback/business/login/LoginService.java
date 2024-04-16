@@ -2,6 +2,8 @@ package ee.valiit.ravimivalvurback.business.login;
 
 import ee.valiit.ravimivalvurback.business.login.dto.LoginResponse;
 import ee.valiit.ravimivalvurback.domain.user.*;
+import ee.valiit.ravimivalvurback.domain.user.role.Role;
+import ee.valiit.ravimivalvurback.domain.user.role.RoleRepository;
 import ee.valiit.ravimivalvurback.infrastructure.validation.ValidationService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

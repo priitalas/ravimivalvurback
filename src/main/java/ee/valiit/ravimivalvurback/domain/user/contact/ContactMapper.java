@@ -1,4 +1,4 @@
-package ee.valiit.ravimivalvurback.domain.user;
+package ee.valiit.ravimivalvurback.domain.user.contact;
 
 import ee.valiit.ravimivalvurback.business.registration.dto.RegistrationRequest;
 import org.mapstruct.*;

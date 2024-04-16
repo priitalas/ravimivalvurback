@@ -17,28 +17,13 @@ public class MedicationController {
         medicationService.findPatientMedications(patientId);
     }
 
-
-    // todo: kontroller medication lisamiseks
-    // todo: Vaja mõelda rada /medication
-    // todo: POST
-    // todo: medicationService alla lahendus/implementatsioon
-    // todo: unitId on foreign key, seda ei saa lisamisel, muutmisel mäpperiga mäppida
-    // todo: enne kui midagi üldse tegema hakkad, siis leia ülesse 'unit' objekt  (reposityry kaudu unitId järgi)
-    // todo: nyyd saab hakata ette valmistama 'medication' rida. Selleks on vaja uut medication entity objekti
-    // todo: info tuleb sisse JSONina. Selleks on vaja DTO klassi sama struktuuriga nagu sissetulev JSON
-    // todo: DTOst on vaja teha entity objekt. Mõistlik oleks see teha mapperi abil.
-    // todo: kui objekt valmist, siis panna sellele külge ka varasemalt leitud unit objekt (foreign key)
-    // todo: Kui kõik vajalik info olemas, siis saab selle 'medication' rea ära salvestada.'
-    // todo: Nyyd saab hakata tegelema medication_image info ettevalmistamisega
-    // todo: vaja luua uus entity objekt medicationImage, kas käsitsi v'õi mapperiga
-    // todo: peale mappimist on vaja külge panna ka medication objekt (foreing key)
-    // todo: salvesta see rida andmebaasi
-    // todo: FINITO
-
-    @PostMapping("/medication")
+    @PostMapping("/add-medication")
     public void addNewMedicine(@RequestBody @Valid MedicationInfo medicationInfo) {
         medicationService.addNewMedication(medicationInfo);
-
     }
 
+    @GetMapping("/units")
+    public void getUnits(){
+        medicationService.getUnits();
+    }
 }

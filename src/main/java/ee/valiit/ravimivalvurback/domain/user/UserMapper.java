@@ -2,6 +2,7 @@ package ee.valiit.ravimivalvurback.domain.user;
 
 import ee.valiit.ravimivalvurback.business.login.dto.LoginResponse;
 import ee.valiit.ravimivalvurback.business.registration.dto.RegistrationRequest;
+import ee.valiit.ravimivalvurback.domain.Status;
 import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)

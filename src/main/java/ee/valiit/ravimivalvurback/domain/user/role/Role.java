@@ -1,4 +1,4 @@
-package ee.valiit.ravimivalvurback.domain.user;
+package ee.valiit.ravimivalvurback.domain.user.role;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;

@@ -1,4 +1,4 @@
-package ee.valiit.ravimivalvurback.domain.user;
+package ee.valiit.ravimivalvurback.domain.user.role;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

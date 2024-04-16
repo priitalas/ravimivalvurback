@@ -1,4 +1,4 @@
-package ee.valiit.ravimivalvurback.domain.user;
+package ee.valiit.ravimivalvurback.domain;
 
 public class Status {
     public static final String ACTIVE = "A";

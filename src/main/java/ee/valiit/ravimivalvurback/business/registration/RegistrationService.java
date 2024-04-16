@@ -2,6 +2,11 @@ package ee.valiit.ravimivalvurback.business.registration;
 
 import ee.valiit.ravimivalvurback.business.registration.dto.RegistrationRequest;
 import ee.valiit.ravimivalvurback.domain.user.*;
+import ee.valiit.ravimivalvurback.domain.user.contact.Contact;
+import ee.valiit.ravimivalvurback.domain.user.contact.ContactMapper;
+import ee.valiit.ravimivalvurback.domain.user.contact.ContactRepository;
+import ee.valiit.ravimivalvurback.domain.user.role.Role;
+import ee.valiit.ravimivalvurback.domain.user.role.RoleRepository;
 import ee.valiit.ravimivalvurback.infrastructure.validation.ValidationService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

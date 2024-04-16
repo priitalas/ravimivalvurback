@@ -1,4 +1,4 @@
-package ee.valiit.ravimivalvurback.domain.medication;
+package ee.valiit.ravimivalvurback.domain.medication.unit;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;

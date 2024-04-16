@@ -1,4 +1,4 @@
-package ee.valiit.ravimivalvurback.domain.medication;
+package ee.valiit.ravimivalvurback.domain.medication.unit;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

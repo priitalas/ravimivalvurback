@@ -1,7 +1,7 @@
 package ee.valiit.ravimivalvurback.domain.medication;
 
 import ee.valiit.ravimivalvurback.business.medication.dto.MedicationInfo;
-import ee.valiit.ravimivalvurback.domain.user.Status;
+import ee.valiit.ravimivalvurback.domain.Status;
 import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)

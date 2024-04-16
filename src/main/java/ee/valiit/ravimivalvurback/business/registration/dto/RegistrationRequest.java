@@ -1,8 +1,6 @@
 package ee.valiit.ravimivalvurback.business.registration.dto;
 
-import ee.valiit.ravimivalvurback.domain.user.Contact;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import ee.valiit.ravimivalvurback.domain.user.contact.Contact;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
