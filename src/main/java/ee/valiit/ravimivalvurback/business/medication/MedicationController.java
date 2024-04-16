@@ -1,9 +1,12 @@
 package ee.valiit.ravimivalvurback.business.medication;
 
 import ee.valiit.ravimivalvurback.business.medication.dto.MedicationInfo;
+import ee.valiit.ravimivalvurback.business.medication.dto.UnitInfo;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @AllArgsConstructor
@@ -23,7 +26,7 @@ public class MedicationController {
     }
 
     @GetMapping("/units")
-    public void getUnits(){
-        medicationService.getUnits();
+    public List<UnitInfo> getUnits(){
+       return medicationService.getUnits();
     }
 }
