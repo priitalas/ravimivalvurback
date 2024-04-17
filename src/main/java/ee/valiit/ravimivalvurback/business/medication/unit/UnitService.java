@@ -7,7 +7,6 @@ import ee.valiit.ravimivalvurback.domain.medication.unit.UnitRepository;
 import ee.valiit.ravimivalvurback.infrastructure.validation.ValidationService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
