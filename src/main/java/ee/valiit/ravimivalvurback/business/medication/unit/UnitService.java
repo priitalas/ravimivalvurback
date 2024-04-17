@@ -21,11 +21,12 @@ public class UnitService {
         return unitMapper.toUnitInfos(units);
     }
 
-    public void addNewUnit(String unitName) {
+    public Integer addNewUnit(String unitName) {
         boolean unitExists = unitRepository.unitExists(unitName);
         ValidationService.validateUnitNameAvailable(unitExists);
         Unit unit = new Unit();
         unit.setName(unitName);
         unitRepository.save(unit);
+        return unit.getId();
     }
 }

@@ -17,8 +17,8 @@ public class UnitController {
     }
 
     @PostMapping("/unit")
-    public void addNewUnit(@RequestBody String unitName){
-        unitService.addNewUnit(unitName);
+    public Integer addNewUnit(@RequestParam String unitName){
+        return unitService.addNewUnit(unitName);
     }
 
 }

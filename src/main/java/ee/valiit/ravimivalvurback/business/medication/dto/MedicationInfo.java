@@ -16,6 +16,6 @@ public class MedicationInfo implements Serializable {
     private String medicationName;
     private String note;
     private String description;
-    private Integer UnitId;
+    private Integer unitId;
     private String medicationImage;
 }

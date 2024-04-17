@@ -8,7 +8,6 @@ import ee.valiit.ravimivalvurback.domain.medication.medicationimage.MedicationIm
 import ee.valiit.ravimivalvurback.domain.medication.medicationimage.MedicationImageMapper;
 import ee.valiit.ravimivalvurback.domain.medication.medicationimage.MedicationImageRepository;
 import ee.valiit.ravimivalvurback.domain.medication.unit.Unit;
-import ee.valiit.ravimivalvurback.domain.medication.unit.UnitMapper;
 import ee.valiit.ravimivalvurback.domain.medication.unit.UnitRepository;
 import ee.valiit.ravimivalvurback.infrastructure.validation.ValidationService;
 import lombok.AllArgsConstructor;
