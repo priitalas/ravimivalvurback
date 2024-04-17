@@ -20,7 +20,6 @@ public class ValidationService {
             throw new ForbiddenException(USER_UNAVAILABLE.getMessage(), USER_UNAVAILABLE.getErrorCode());
         }
     }
-
     public static void validateMedicineNameAvailable(boolean medicineAlreadyExists) {
         if (medicineAlreadyExists) {
             throw new ForbiddenException(MEDICINE_UNAVAILABLE.getMessage(), MEDICINE_UNAVAILABLE.getErrorCode());
@@ -30,6 +29,12 @@ public class ValidationService {
     public static void validateUnitNameAvailable(boolean unitExists){
         if(unitExists){
             throw new ForbiddenException(UNIT_UNAVAILABLE.getMessage(),UNIT_UNAVAILABLE.getErrorCode());
+        }
+    }
+
+    public static void validateDoctorHasPatients(boolean noPatientsFound){
+        if(noPatientsFound){
+            throw new ForbiddenException(NO_PATIENTS_FOUND.getMessage(), NO_PATIENTS_FOUND.getErrorCode());
         }
     }
 }

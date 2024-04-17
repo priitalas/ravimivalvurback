@@ -11,11 +11,6 @@ public class MedicationController {
 
     private MedicationService medicationService;
 
-    // todo: teeme hiljem
-    @GetMapping("/medications/patient")
-    public void findPatientMedications(@RequestParam Integer patientId) {
-        medicationService.findPatientMedications(patientId);
-    }
 
     @PostMapping("/medication")
     public void addNewMedication(@RequestBody @Valid MedicationInfo medicationInfo) {
