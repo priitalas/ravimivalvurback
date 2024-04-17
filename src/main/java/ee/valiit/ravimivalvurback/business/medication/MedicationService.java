@@ -23,7 +23,7 @@ public class MedicationService {
     private final MedicationImageMapper medicationImageMapper;
     private final MedicationImageRepository medicationImageRepository;
 
-    public void findPatientMedications(Integer patientId) {
+    public void findPatientMedicationPlan(Integer patientId) {
 
     }
 
