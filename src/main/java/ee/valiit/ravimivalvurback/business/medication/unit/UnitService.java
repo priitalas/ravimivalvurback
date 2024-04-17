@@ -25,7 +25,8 @@ public class UnitService {
     public void addNewUnit(String unitName) {
         boolean unitExists = unitRepository.unitExists(unitName);
         ValidationService.validateUnitNameAvailable(unitExists);
-        Unit unit = unitMapper.toUnit(unitName);
+        Unit unit = new Unit();
+        unit.setName(unitName);
         unitRepository.save(unit);
     }
 }

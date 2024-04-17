@@ -14,7 +14,4 @@ public interface UnitMapper {
 
     List<UnitInfo> toUnitInfos(List<Unit> units);
 
-    @Mapping(source = "unitName", target = "name")
-    Unit toUnit(String unitName);
-
 }
