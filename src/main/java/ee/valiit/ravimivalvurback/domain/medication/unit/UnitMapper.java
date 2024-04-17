@@ -1,7 +1,6 @@
 package ee.valiit.ravimivalvurback.domain.medication.unit;
 
 import ee.valiit.ravimivalvurback.business.medication.unit.dto.UnitInfo;
-import ee.valiit.ravimivalvurback.business.medication.unit.dto.UnitRequest;
 import org.mapstruct.*;
 
 import java.util.List;
@@ -16,6 +15,6 @@ public interface UnitMapper {
     List<UnitInfo> toUnitInfos(List<Unit> units);
 
     @Mapping(source = "unitName", target = "name")
-    Unit toUnit(UnitRequest unitRequest);
+    Unit toUnit(String unitName);
 
 }

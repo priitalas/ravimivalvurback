@@ -3,10 +3,7 @@ package ee.valiit.ravimivalvurback.business.medication.unit;
 import ee.valiit.ravimivalvurback.business.medication.unit.dto.UnitInfo;
 import ee.valiit.ravimivalvurback.business.medication.unit.dto.UnitRequest;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,8 +17,8 @@ public class UnitController {
         return unitService.getUnits();
     }
 
-    @PostMapping("/units")
-    public void addNewUnit(@RequestBody UnitRequest unitRequest){
-    unitService.addNewUnit(unitRequest);
+    @PostMapping("/unit")
+    public void addNewUnit(@RequestParam String unitName){
+    unitService.addNewUnit(unitName);
     }
 }

@@ -1,13 +1,13 @@
 package ee.valiit.ravimivalvurback.business.medication.unit;
 
 import ee.valiit.ravimivalvurback.business.medication.unit.dto.UnitInfo;
-import ee.valiit.ravimivalvurback.business.medication.unit.dto.UnitRequest;
 import ee.valiit.ravimivalvurback.domain.medication.unit.Unit;
 import ee.valiit.ravimivalvurback.domain.medication.unit.UnitMapper;
 import ee.valiit.ravimivalvurback.domain.medication.unit.UnitRepository;
 import ee.valiit.ravimivalvurback.infrastructure.validation.ValidationService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -22,10 +22,10 @@ public class UnitService {
         return unitMapper.toUnitInfos(units);
     }
 
-    public void addNewUnit(UnitRequest unitRequest) {
-        boolean unitExists = unitRepository.unitExists(unitRequest.getUnitName());
+    public void addNewUnit(String unitName) {
+        boolean unitExists = unitRepository.unitExists(unitName);
         ValidationService.validateUnitNameAvailable(unitExists);
-        Unit unit = unitMapper.toUnit(unitRequest);
+        Unit unit = unitMapper.toUnit(unitName);
         unitRepository.save(unit);
     }
 }
