@@ -1,4 +1,4 @@
-package ee.valiit.ravimivalvurback.business.medication.dto;
+package ee.valiit.ravimivalvurback.business.medication.unit.dto;
 
 import lombok.Value;
 

@@ -26,4 +26,10 @@ public class ValidationService {
             throw new ForbiddenException(MEDICINE_UNAVAILABLE.getMessage(), MEDICINE_UNAVAILABLE.getErrorCode());
         }
     }
+
+    public static void validateUnitNameAvailable(boolean unitExists){
+        if(unitExists){
+            throw new ForbiddenException(UNIT_UNAVAILABLE.getMessage(),UNIT_UNAVAILABLE.getErrorCode());
+        }
+    }
 }

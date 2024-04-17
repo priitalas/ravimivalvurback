@@ -1,8 +1,9 @@
 package ee.valiit.ravimivalvurback.business.medication;
 
 import ee.valiit.ravimivalvurback.business.medication.dto.MedicationInfo;
-import ee.valiit.ravimivalvurback.business.medication.dto.UnitInfo;
-import ee.valiit.ravimivalvurback.domain.medication.*;
+import ee.valiit.ravimivalvurback.domain.medication.Medication;
+import ee.valiit.ravimivalvurback.domain.medication.MedicationMapper;
+import ee.valiit.ravimivalvurback.domain.medication.MedicationRepository;
 import ee.valiit.ravimivalvurback.domain.medication.medicationimage.MedicationImage;
 import ee.valiit.ravimivalvurback.domain.medication.medicationimage.MedicationImageMapper;
 import ee.valiit.ravimivalvurback.domain.medication.medicationimage.MedicationImageRepository;
@@ -13,15 +14,12 @@ import ee.valiit.ravimivalvurback.infrastructure.validation.ValidationService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 @AllArgsConstructor
 public class MedicationService {
 
     private final MedicationRepository medicationRepository;
     private final UnitRepository unitRepository;
-    private final UnitMapper unitMapper;
     private final MedicationMapper medicationMapper;
     private final MedicationImageMapper medicationImageMapper;
     private final MedicationImageRepository medicationImageRepository;
@@ -47,8 +45,5 @@ public class MedicationService {
        medicationImageRepository.save(medicationImage);
     }
 
-    public List<UnitInfo> getUnits() {
-        List<Unit> units = unitRepository.findAll();
-        return unitMapper.toUnitInfos(units);
-    }
+
 }

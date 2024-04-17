@@ -12,17 +12,17 @@ INSERT INTO ravim.contact (id, user_id, email, first_name, last_name) VALUES (de
 INSERT INTO ravim.contact (id, user_id, email, first_name, last_name) VALUES (default, 1, 'adm', 'Ants', 'Tamm');
 INSERT INTO ravim.contact (id, user_id, email, first_name, last_name) VALUES (default, 2, 'kalle', 'Kalle', 'Kala');
 
-INSERT INTO ravim.doctor_patient (id, doctor_id, patient_id, status) VALUES (1, 3, 4, 'P');
-INSERT INTO ravim.doctor_patient (id, doctor_id, patient_id, status) VALUES (3, 3, 2, 'A');
+INSERT INTO ravim.doctor_patient (id, doctor_id, patient_id, status) VALUES (default, 3, 4, 'P');
+INSERT INTO ravim.doctor_patient (id, doctor_id, patient_id, status) VALUES (default, 3, 2, 'A');
 
-INSERT INTO ravim.unit (id, name) VALUES (1, 'tablett');
-INSERT INTO ravim.unit (id, name) VALUES (2, 'ml');
+INSERT INTO ravim.unit (id, name) VALUES (default, 'tablett');
+INSERT INTO ravim.unit (id, name) VALUES (default, 'ml');
 
 
-INSERT INTO ravim.medication (id, unit_id, name, note, description, status) VALUES (1, 1, 'Aspirin', 'peale sööki', 'valuvaigisti, palaviku alandaja', 'A');
-INSERT INTO ravim.medication (id, unit_id, name, note, description, status) VALUES (2, 2, 'Prospan', null, 'köhasiirup', 'A');
+INSERT INTO ravim.medication (id, unit_id, name, note, description, status) VALUES (default, 1, 'Aspirin', 'peale sööki', 'valuvaigisti, palaviku alandaja', 'A');
+INSERT INTO ravim.medication (id, unit_id, name, note, description, status) VALUES (default, 2, 'Prospan', null, 'köhasiirup', 'A');
 
-INSERT INTO ravim.medication_plan (id, patient_id, medication_id, frequency, period_start, period_end, status) VALUES (1, 2, 1, 3, '2024-04-15', '2024-05-01', 'A');
-INSERT INTO ravim.medication_plan (id, patient_id, medication_id, frequency, period_start, period_end, status) VALUES (2, 2, 2, 2, '2024-04-15', '2024-05-01', 'A');
+INSERT INTO ravim.medication_plan (id, patient_id, medication_id, frequency, period_start, period_end, status) VALUES (default, 2, 1, 3, '2024-04-15', '2024-05-01', 'A');
+INSERT INTO ravim.medication_plan (id, patient_id, medication_id, frequency, period_start, period_end, status) VALUES (default, 2, 2, 2, '2024-04-15', '2024-05-01', 'A');
 
 
