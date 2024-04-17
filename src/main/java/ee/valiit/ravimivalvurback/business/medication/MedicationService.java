@@ -33,7 +33,7 @@ public class MedicationService {
     public void addNewMedication(MedicationInfo medicationInfo) {
         boolean medicineAlreadyExists = medicationRepository.medicineAlreadyExists(medicationInfo.getMedicationName());
         ValidationService.validateMedicineNameAvailable(medicineAlreadyExists);
-        Unit unit = unitRepository.getReferenceById(medicationInfo.getSelectedUnitId());
+        Unit unit = unitRepository.getReferenceById(medicationInfo.getUnitId());
         Medication medication = medicationMapper.toMedication(medicationInfo);
         medication.setUnit(unit);
         medicationRepository.save(medication);
