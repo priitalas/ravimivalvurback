@@ -10,5 +10,4 @@ public interface MedicationPlanRepository extends JpaRepository<MedicationPlan, 
 
     @Query("select m from MedicationPlan m where m.patient.id = :patientId")
     List<MedicationPlan> findMedicationPlanBy(Integer patientId);
-
 }

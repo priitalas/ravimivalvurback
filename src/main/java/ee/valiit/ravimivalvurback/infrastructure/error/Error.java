@@ -8,7 +8,8 @@ public enum Error {
     NO_LOCATION_FOUND("Ei leitud ühtegi pangaautomaati", 222),
     USER_UNAVAILABLE("Sellise nimega kasutaja on juba registreeritud", 333),
     MEDICINE_UNAVAILABLE("Sellise nimega ravim on juba lisatud", 444),
-    UNIT_UNAVAILABLE("Selline ühik on juba olemas", 555);
+    UNIT_UNAVAILABLE("Selline ühik on juba olemas", 555),
+    NO_PATIENTS_FOUND("Teil ei ole veel ühtegi patsienti", 666);
 
     private final String message;
     private final int errorCode;

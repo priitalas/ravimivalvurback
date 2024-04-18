@@ -23,10 +23,6 @@ public class MedicationService {
     private final MedicationImageMapper medicationImageMapper;
     private final MedicationImageRepository medicationImageRepository;
 
-    public void findPatientMedicationPlan(Integer patientId) {
-
-    }
-
     public void addNewMedication(MedicationInfo medicationInfo) {
         boolean medicineAlreadyExists = medicationRepository.medicineAlreadyExists(medicationInfo.getMedicationName());
         ValidationService.validateMedicineNameAvailable(medicineAlreadyExists);

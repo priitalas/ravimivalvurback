@@ -11,8 +11,6 @@ public class MedicationController {
 
     private MedicationService medicationService;
 
-    // todo: teeme hiljem
-
 
     @PostMapping("/medication")
     public void addNewMedication(@RequestBody @Valid MedicationInfo medicationInfo) {
