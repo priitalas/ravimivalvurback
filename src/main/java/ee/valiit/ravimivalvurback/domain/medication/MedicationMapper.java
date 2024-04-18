@@ -1,6 +1,7 @@
 package ee.valiit.ravimivalvurback.domain.medication;
 
 import ee.valiit.ravimivalvurback.business.medication.dto.MedicationInfo;
+import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.MedicationPlanInfo;
 import ee.valiit.ravimivalvurback.domain.Status;
 import org.mapstruct.*;
 
@@ -11,5 +12,8 @@ public interface MedicationMapper {
     @Mapping(source="note", target="note")
     @Mapping(constant = Status.ACTIVE, target = "status")
     Medication toMedication(MedicationInfo medicationInfo);
+
+    @Mapping(source = "unit.name", target = "medicationUnitName")
+    MedicationPlanInfo toMedicationPlanInfo(Medication medication);
 
 }
