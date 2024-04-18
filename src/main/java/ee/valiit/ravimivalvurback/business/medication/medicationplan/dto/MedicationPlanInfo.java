@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 /**
@@ -16,13 +17,14 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MedicationPlanInfo implements Serializable {
+    private Integer medicationPlanId;
     private String medicationPlanStatus;
     private String medicationName;
     private String medicationUnitName;
     @NotNull
     private Integer frequency;
     @NotNull
-    private Integer quantity;
+    private BigDecimal quantity;
     @NotNull
     private LocalDate periodStart;
     @NotNull

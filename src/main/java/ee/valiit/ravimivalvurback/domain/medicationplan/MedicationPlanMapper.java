@@ -15,6 +15,7 @@ public interface MedicationPlanMapper {
     @Mapping(source = "periodStart", target = "periodStart")
     @Mapping(source = "periodEnd", target = "periodEnd")
     @Mapping(source = "medication.name", target = "medicationName")
+    @Mapping(source = "id", target = "medicationPlanId")
     MedicationPlanInfo toMedicationPlanInfo(MedicationPlan medicationPlan);
 
     List<MedicationPlanInfo> toMedicationPlanInfos(List<MedicationPlan> medicationPlan);

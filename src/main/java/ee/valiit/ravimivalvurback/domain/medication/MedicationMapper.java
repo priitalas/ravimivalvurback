@@ -11,4 +11,5 @@ public interface MedicationMapper {
     @Mapping(source="note", target="note")
     @Mapping(constant = Status.ACTIVE, target = "status")
     Medication toMedication(MedicationInfo medicationInfo);
+
 }

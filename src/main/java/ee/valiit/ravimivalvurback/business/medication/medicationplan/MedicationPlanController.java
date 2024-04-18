@@ -1,4 +1,4 @@
-package ee.valiit.ravimivalvurback.business.medication.medicationPlan;
+package ee.valiit.ravimivalvurback.business.medication.medicationplan;
 
 import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.MedicationPlanInfo;
 import lombok.AllArgsConstructor;
@@ -18,7 +18,5 @@ public class MedicationPlanController {
     public List<MedicationPlanInfo> findPatientMedicationPlans(@RequestParam Integer patientId) {
         List<MedicationPlanInfo> medicationPlans = medicationPlanService.findPatientMedicationPlans(patientId);
         return medicationPlans;
-
-
     }
 }
