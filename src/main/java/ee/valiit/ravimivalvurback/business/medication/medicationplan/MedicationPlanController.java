@@ -1,4 +1,4 @@
-package ee.valiit.ravimivalvurback.business.medication.medicationplan;
+package ee.valiit.ravimivalvurback.business.medication.medicationPlan;
 
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,12 +7,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @AllArgsConstructor
-
 public class MedicationPlanController {
     private MedicationPlanService medicationPlanService;
 
-    @GetMapping("/medication-plans/patient/{patientId}")
-    public void findPatientMedicationPlans(@RequestParam Integer patientId) {
-        medicationPlanService.findPatientMedicationPlans(patientId);
+    @GetMapping("/medications/patient")
+    public void findPatientMedications(@RequestParam Integer patientId) {
+        medicationPlanService.findPatientMedicationPlan(patientId);
     }
 }
