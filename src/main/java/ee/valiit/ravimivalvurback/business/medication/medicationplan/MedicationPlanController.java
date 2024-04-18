@@ -1,7 +1,6 @@
-package ee.valiit.ravimivalvurback.business.medication.medicationplan;
+package ee.valiit.ravimivalvurback.business.medication.medicationPlan;
 
 import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.MedicationPlanInfo;
-import ee.valiit.ravimivalvurback.domain.medicationplan.MedicationPlan;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 
 public class MedicationPlanController {
-    private ee.valiit.ravimivalvurback.business.medication.medicationplan.MedicationPlanService medicationPlanService;
+    private MedicationPlanService medicationPlanService;
 
     @GetMapping("/medication-plans/patient/{patientId}")
     public List<MedicationPlanInfo> findPatientMedicationPlans(@RequestParam Integer patientId) {
