@@ -16,16 +16,13 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MedicationPlanInfo implements Serializable {
-    private Integer patientId;
     private String medicationPlanStatus;
-    // private Integer medicationId;
-    // private String medicationUnitName;
-    // private String medicationName;
-    // private String medicationNote;
-    // private String medicationDescription;
-    // private String medicationStatus;
+    private String medicationName;
+    private String medicationUnitName;
     @NotNull
     private Integer frequency;
+    @NotNull
+    private Integer quantity;
     @NotNull
     private LocalDate periodStart;
     @NotNull
