@@ -6,9 +6,9 @@ import org.mapstruct.*;
 import java.util.List;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
-public interface PatientMapper {
+public interface DoctorPatientMapper {
     @Mapping(source = "patient", target = "patientId")
-    DoctorPatientInfo toDoctorPatientInfo(Patients patients);
+    DoctorPatientInfo toDoctorPatientInfo(DoctorPatient doctorPatient);
 
-    List<DoctorPatientInfo> toDoctorPatientInfos(List<Patients> patients);
+    List<DoctorPatientInfo> toDoctorPatientInfos(List<DoctorPatient> patients);
 }
