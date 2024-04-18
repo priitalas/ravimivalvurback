@@ -9,11 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 
 public class MedicationPlanController {
-
     private MedicationPlanService medicationPlanService;
 
-    @GetMapping("/medications/patient")
-    public void findPatientMedications(@RequestParam Integer patientId) {
-        medicationPlanService.findPatientMedicationPlan(patientId);
+    @GetMapping("/medication-plans/patient/{patientId}")
+    public void findPatientMedicationPlans(@RequestParam Integer patientId) {
+        medicationPlanService.findPatientMedicationPlans(patientId);
     }
 }

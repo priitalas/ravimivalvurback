@@ -15,19 +15,24 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class PatientService {
+public class DoctorService {
     private DoctorPatientRepository doctorPatientRepository;
     private ContactRepository contactRepository;
     private DoctorPatientMapper doctorPatientMapper;
     private ContactMapper contactMapper;
 
-    public List<DoctorPatientInfo> findPatients(Integer doctorId) {
-        boolean noPatientsFound = doctorPatientRepository.noPatientsFound(doctorId);
-        ValidationService.validateDoctorHasPatients(noPatientsFound);
+    public List<DoctorPatientInfo> findActivePatients(Integer doctorId) {
         List<DoctorPatient> doctorPatients = doctorPatientRepository.findPatientsBy(doctorId, "A");
+        ValidationService.validateDoctorHasPatients(doctorPatients);
 
-        List<Contact> contacts = contactRepository.findContactsBy(doctorPatients);
-        List<DoctorPatientInfo> doctorPatientInfos = contactMapper.toDoctorPatientInfos(contacts);
+        List<DoctorPatientInfo> doctorPatientInfos = doctorPatientMapper.toDoctorPatientInfos(doctorPatients);
+
+        for (DoctorPatientInfo doctorPatientInfo : doctorPatientInfos) {
+            Contact contact = contactRepository.findContactBy(doctorPatientInfo.getPatientId());
+            doctorPatientInfo.setFirstName(contact.getFirstName());
+            doctorPatientInfo.setLastName(contact.getLastName());
+        }
+
         return doctorPatientInfos;
     }
 }

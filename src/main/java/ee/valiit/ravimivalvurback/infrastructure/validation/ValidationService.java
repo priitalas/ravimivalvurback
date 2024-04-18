@@ -1,8 +1,10 @@
 package ee.valiit.ravimivalvurback.infrastructure.validation;
 
 import ee.valiit.ravimivalvurback.domain.user.User;
+import ee.valiit.ravimivalvurback.domain.user.doctor.DoctorPatient;
 import ee.valiit.ravimivalvurback.infrastructure.exception.ForbiddenException;
 
+import java.util.List;
 import java.util.Optional;
 
 import static ee.valiit.ravimivalvurback.infrastructure.error.Error.*;
@@ -32,8 +34,8 @@ public class ValidationService {
         }
     }
 
-    public static void validateDoctorHasPatients(boolean noPatientsFound){
-        if(noPatientsFound){
+    public static void validateDoctorHasPatients(List<DoctorPatient> doctorPatients){
+        if(doctorPatients.isEmpty()){
             throw new ForbiddenException(NO_PATIENTS_FOUND.getMessage(), NO_PATIENTS_FOUND.getErrorCode());
         }
     }
