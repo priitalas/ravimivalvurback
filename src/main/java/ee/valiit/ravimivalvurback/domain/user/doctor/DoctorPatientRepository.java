@@ -8,10 +8,7 @@ import java.util.List;
 
 public interface DoctorPatientRepository extends JpaRepository<DoctorPatient, Integer> {
 
-    @Query("select (count(d) < 1) from DoctorPatient d where d.doctor.id = :doctorId and d.status = 'A'")
-    boolean noPatientsFound(Integer doctorId);
-
-    @Query("select d from DoctorPatient d where d.doctor.id = :doctorId and d.status = 'A'")
+    @Query("select d from DoctorPatient d where d.doctor.id = :doctorId and d.status = :status")
     List<DoctorPatient> findPatientsBy(Integer doctorId, String status);
 
 }
