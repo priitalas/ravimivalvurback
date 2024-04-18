@@ -18,18 +18,17 @@ import java.time.LocalDate;
 public class MedicationPlanInfo implements Serializable {
     private Integer patientId;
     private String medicationPlanStatus;
-    private Integer medicationId;
-    private String medicationUnitName;
-    private String medicationName;
-    private String medicationNote;
-    private String medicationDescription;
-    private String medicationStatus;
+    // private Integer medicationId;
+    // private String medicationUnitName;
+    // private String medicationName;
+    // private String medicationNote;
+    // private String medicationDescription;
+    // private String medicationStatus;
     @NotNull
     private Integer frequency;
     @NotNull
     private LocalDate periodStart;
     @NotNull
     private LocalDate periodEnd;
-   // @NotNull
-   // private String status;
+
 }
