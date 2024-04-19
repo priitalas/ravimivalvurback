@@ -5,6 +5,7 @@ import ee.valiit.ravimivalvurback.domain.medication.Medication;
 import ee.valiit.ravimivalvurback.domain.medication.MedicationMapper;
 import ee.valiit.ravimivalvurback.domain.medication.MedicationRepository;
 import ee.valiit.ravimivalvurback.domain.medicationplan.*;
+import ee.valiit.ravimivalvurback.infrastructure.validation.ValidationService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +25,7 @@ public class MedicationPlanService {
     public List<MedicationPlanInfo> findPatientMedicationPlans(Integer patientId) {
         List<MedicationPlan> medicationPlans = medicationPlanRepository.findMedicationPlansBy(patientId);
         List<MedicationPlanInfo> medicationPlanInfos = medicationPlanMapper.toMedicationPlanInfos(medicationPlans);
+        ValidationService.validatePatientHaveMedicationPlan(medicationPlans);
 
         for (MedicationPlanInfo medicationPlanInfo : medicationPlanInfos) {
             MedicationTime medicationTime = medicationTimeRepository.getReferenceById(medicationPlanInfo.getMedicationPlanId());
