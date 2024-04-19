@@ -1,10 +1,9 @@
-package ee.valiit.ravimivalvurback.business.patient.dto;
+package ee.valiit.ravimivalvurback.business.doctor.dto;
 
 import ee.valiit.ravimivalvurback.domain.user.doctor.DoctorPatient;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Value;
 
 import java.io.Serializable;
 

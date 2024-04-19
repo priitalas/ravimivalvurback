@@ -24,6 +24,11 @@ public class Logbook {
     private MedicationPlan medicationPlan;
 
     @NotNull
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "medication_time_id", nullable = false)
+    private MedicationTime medicationTime;
+
+    @NotNull
     @Column(name = "date", nullable = false)
     private LocalDate date;
 

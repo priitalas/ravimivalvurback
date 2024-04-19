@@ -1,6 +1,6 @@
 package ee.valiit.ravimivalvurback.domain.user.contact;
 
-import ee.valiit.ravimivalvurback.business.patient.dto.DoctorPatientInfo;
+import ee.valiit.ravimivalvurback.business.doctor.dto.DoctorPatientInfo;
 import ee.valiit.ravimivalvurback.business.registration.dto.RegistrationRequest;
 import org.mapstruct.*;
 

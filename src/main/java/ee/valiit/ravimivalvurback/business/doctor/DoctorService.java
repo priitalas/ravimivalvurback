@@ -1,6 +1,6 @@
-package ee.valiit.ravimivalvurback.business.patient;
+package ee.valiit.ravimivalvurback.business.doctor;
 
-import ee.valiit.ravimivalvurback.business.patient.dto.DoctorPatientInfo;
+import ee.valiit.ravimivalvurback.business.doctor.dto.DoctorPatientInfo;
 import ee.valiit.ravimivalvurback.domain.user.contact.Contact;
 import ee.valiit.ravimivalvurback.domain.user.contact.ContactMapper;
 import ee.valiit.ravimivalvurback.domain.user.contact.ContactRepository;
