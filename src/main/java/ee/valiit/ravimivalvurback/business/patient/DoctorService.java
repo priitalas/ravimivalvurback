@@ -2,6 +2,7 @@ package ee.valiit.ravimivalvurback.business.patient;
 
 import ee.valiit.ravimivalvurback.business.patient.dto.DoctorPatientInfo;
 import ee.valiit.ravimivalvurback.business.patient.dto.PatientNotInDoctorListInfo;
+import ee.valiit.ravimivalvurback.domain.user.User;
 import ee.valiit.ravimivalvurback.domain.user.contact.Contact;
 import ee.valiit.ravimivalvurback.domain.user.contact.ContactRepository;
 import ee.valiit.ravimivalvurback.domain.user.doctor.DoctorPatient;
@@ -51,4 +52,15 @@ public class DoctorService {
         return patientNotInDoctorListInfos;
     }
 
+    public void postNewPatientToDoctorList(Integer patientId, Integer doctorId) {
+        DoctorPatient doctorPatient = new DoctorPatient();
+        User doctor = new User();
+        doctor.setId(doctorId);
+        doctorPatient.setDoctor(doctor);
+        User patient = new User();
+        patient.setId(patientId);
+        doctorPatient.setPatient(patient);
+        doctorPatient.setStatus("P");
+        doctorPatientRepository.save(doctorPatient);
+    }
 }

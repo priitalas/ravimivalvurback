@@ -4,6 +4,7 @@ import ee.valiit.ravimivalvurback.business.patient.dto.PatientNotInDoctorListInf
 import ee.valiit.ravimivalvurback.business.patient.dto.DoctorPatientInfo;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,8 +21,13 @@ public class DoctorController {
         return activePatients;
     }
 
-    @GetMapping("/patients/nonactive")
+    @GetMapping("/doctor/patients/newpatient")
     public List<PatientNotInDoctorListInfo> findPatientsNotInDoctorActiveList(@RequestParam Integer doctorId) {
         return doctorService.findPatientsNotInDoctorActiveList(doctorId);
+    }
+
+    @PostMapping("/patient")
+    public void postNewPatientToDoctorList(@RequestParam Integer patientId, Integer doctorId){
+        doctorService.postNewPatientToDoctorList(patientId, doctorId);
     }
 }

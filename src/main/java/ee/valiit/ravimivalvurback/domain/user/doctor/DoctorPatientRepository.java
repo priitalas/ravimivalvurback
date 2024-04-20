@@ -11,9 +11,11 @@ public interface DoctorPatientRepository extends JpaRepository<DoctorPatient, In
     @Query("select d from DoctorPatient d where d.doctor.id = :doctorId and d.status = :status order by d.patient.status")
     List<DoctorPatient> findPatientsBy(Integer doctorId, String status);
 
-
-
     @Query("select d.patient.id from DoctorPatient d where d.doctor.id = :doctorId")
     List<Integer> findPatientsIdBy(Integer doctorId);
+
+    @Query("select d from DoctorPatient d where d.doctor.id = :doctorId and d.patient.id = :patientId")
+    DoctorPatient findPatientBy(Integer doctorId, Integer patientId);
+
 
 }
