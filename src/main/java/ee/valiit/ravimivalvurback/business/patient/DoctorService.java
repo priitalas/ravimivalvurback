@@ -1,8 +1,8 @@
 package ee.valiit.ravimivalvurback.business.patient;
 
 import ee.valiit.ravimivalvurback.business.patient.dto.DoctorPatientInfo;
+import ee.valiit.ravimivalvurback.business.patient.dto.PatientNotInDoctorListInfo;
 import ee.valiit.ravimivalvurback.domain.user.contact.Contact;
-import ee.valiit.ravimivalvurback.domain.user.contact.ContactMapper;
 import ee.valiit.ravimivalvurback.domain.user.contact.ContactRepository;
 import ee.valiit.ravimivalvurback.domain.user.doctor.DoctorPatient;
 import ee.valiit.ravimivalvurback.domain.user.doctor.DoctorPatientMapper;
@@ -11,6 +11,7 @@ import ee.valiit.ravimivalvurback.infrastructure.validation.ValidationService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -19,7 +20,6 @@ public class DoctorService {
     private DoctorPatientRepository doctorPatientRepository;
     private ContactRepository contactRepository;
     private DoctorPatientMapper doctorPatientMapper;
-    private ContactMapper contactMapper;
 
     public List<DoctorPatientInfo> findActivePatients(Integer doctorId) {
         List<DoctorPatient> doctorPatients = doctorPatientRepository.findPatientsBy(doctorId, "A");
@@ -32,7 +32,23 @@ public class DoctorService {
             doctorPatientInfo.setFirstName(contact.getFirstName());
             doctorPatientInfo.setLastName(contact.getLastName());
         }
-
         return doctorPatientInfos;
     }
+
+    public List<PatientNotInDoctorListInfo> findPatientsNotInDoctorActiveList(Integer doctorId) {
+        List<PatientNotInDoctorListInfo> patientNotInDoctorListInfos = new ArrayList<>();
+        List<Contact> allPatients = contactRepository.findContactsByRole("patient");
+        for (Contact patient : allPatients) {
+            if (!doctorPatientRepository.findPatientsIdBy(doctorId).contains(patient.getUser().getId())) {
+                PatientNotInDoctorListInfo patientNotInDoctorListInfo = new PatientNotInDoctorListInfo();
+                patientNotInDoctorListInfo.setPatientId(patient.getUser().getId());
+                patientNotInDoctorListInfo.setFirstName(patient.getFirstName());
+                patientNotInDoctorListInfo.setLastName(patient.getLastName());
+                patientNotInDoctorListInfos.add(patientNotInDoctorListInfo);
+            }
+        }
+        ValidationService.validateDoctorHasNewPatientsToAdd(patientNotInDoctorListInfos);
+        return patientNotInDoctorListInfos;
+    }
+
 }
