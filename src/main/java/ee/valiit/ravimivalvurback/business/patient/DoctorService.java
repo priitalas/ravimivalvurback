@@ -63,4 +63,8 @@ public class DoctorService {
         doctorPatient.setStatus("P");
         doctorPatientRepository.save(doctorPatient);
     }
+
+    public void deletePatientFromDoctorList(Integer patientId, Integer doctorId) {
+        doctorPatientRepository.deleteFromTableBy(doctorId, patientId);
+    }
 }

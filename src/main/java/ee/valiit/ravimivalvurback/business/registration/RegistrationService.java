@@ -1,5 +1,6 @@
 package ee.valiit.ravimivalvurback.business.registration;
 
+import ee.valiit.ravimivalvurback.business.registration.dto.ContactChangeRequest;
 import ee.valiit.ravimivalvurback.business.registration.dto.RegistrationRequest;
 import ee.valiit.ravimivalvurback.domain.user.*;
 import ee.valiit.ravimivalvurback.domain.user.contact.Contact;
@@ -32,5 +33,9 @@ public class RegistrationService {
         Contact contact = contactMapper.toContact(registrationRequest);
         contact.setUser(user);
         contactRepository.save(contact);
+    }
+
+    public void changeUserContacts(ContactChangeRequest contactChangeRequest) {
+
     }
 }
