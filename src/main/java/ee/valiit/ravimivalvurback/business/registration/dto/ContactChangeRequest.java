@@ -9,16 +9,16 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- * DTO for {@link ee.valiit.ravimivalvurback.domain.user.contact.Contact}
+ * DTO for {@link ee.valiit.ravimivalvurback.domain.user.User}
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class ContactChangeRequest implements Serializable {
     private Integer userId;
-    private String userUsername;
-    private String userPassword;
-    private String userStatus;
+    private String username;
+    private String password;
+    private Integer roleId;
     @NotNull
     @Size(max = 255)
     private String firstName;
