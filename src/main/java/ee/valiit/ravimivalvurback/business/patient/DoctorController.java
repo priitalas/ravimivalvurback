@@ -15,10 +15,10 @@ import java.util.List;
 public class DoctorController {
     private DoctorService doctorService;
 
-    @GetMapping("/patients")
-    public List<DoctorPatientInfo> findActivePatients(@RequestParam Integer doctorId) {
-        List<DoctorPatientInfo> activePatients = doctorService.findActivePatients(doctorId);
-        return activePatients;
+    @GetMapping("doctor/patients")
+    public List<DoctorPatientInfo> findPatientsInDoctorsList(@RequestParam Integer doctorId) {
+        List<DoctorPatientInfo> patientsInDoctorsList = doctorService.findPatientsInDoctorsList(doctorId);
+        return patientsInDoctorsList;
     }
 
     @GetMapping("/doctor/patients/newpatient")
@@ -26,7 +26,7 @@ public class DoctorController {
         return doctorService.findPatientsNotInDoctorActiveList(doctorId);
     }
 
-    @PostMapping("/patient")
+    @PostMapping("/doctor/patient")
     public void postNewPatientToDoctorList(@RequestParam Integer patientId, Integer doctorId){
         doctorService.postNewPatientToDoctorList(patientId, doctorId);
     }

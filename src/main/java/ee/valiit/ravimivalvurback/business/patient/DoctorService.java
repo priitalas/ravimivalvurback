@@ -22,8 +22,8 @@ public class DoctorService {
     private ContactRepository contactRepository;
     private DoctorPatientMapper doctorPatientMapper;
 
-    public List<DoctorPatientInfo> findActivePatients(Integer doctorId) {
-        List<DoctorPatient> doctorPatients = doctorPatientRepository.findPatientsBy(doctorId, "A");
+    public List<DoctorPatientInfo> findPatientsInDoctorsList(Integer doctorId) {
+        List<DoctorPatient> doctorPatients = doctorPatientRepository.findPatientsBy(doctorId);
         ValidationService.validateDoctorHasPatients(doctorPatients);
 
         List<DoctorPatientInfo> doctorPatientInfos = doctorPatientMapper.toDoctorPatientInfos(doctorPatients);
