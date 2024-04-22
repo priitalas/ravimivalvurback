@@ -1,20 +1,20 @@
 package ee.valiit.ravimivalvurback.business.medication.medicationplan;
 
-import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.DoctorPatientMedicationPlan;
+import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.MedicationPlanInfo;
 import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.PatientMedicationPlan;
 import ee.valiit.ravimivalvurback.domain.medication.Medication;
 import ee.valiit.ravimivalvurback.domain.medication.MedicationRepository;
-import ee.valiit.ravimivalvurback.domain.medication.medicationimage.MedicationImage;
 import ee.valiit.ravimivalvurback.domain.medication.medicationimage.MedicationImageRepository;
 import ee.valiit.ravimivalvurback.domain.medicationplan.*;
 import ee.valiit.ravimivalvurback.infrastructure.validation.ValidationService;
 import ee.valiit.ravimivalvurback.util.StringConverter;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import ee.valiit.ravimivalvurback.infrastructure.validation.ValidationService;
 
-import java.time.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneOffset;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,20 +31,9 @@ public class MedicationPlanService {
     private final LogbookRepository logbookRepository;
 
 
-    public List<DoctorPatientMedicationPlan> findDoctorPatientMedicationPlans(Integer patientId) {
-        List<MedicationPlan> medicationPlans = medicationPlanRepository.findMedicationPlansBy(patientId);
-        List<DoctorPatientMedicationPlan> doctorPatientMedicationPlans = medicationPlanMapper.toDoctorPatientMedicationPlans(medicationPlans);
 
-        for (DoctorPatientMedicationPlan doctorPatientMedicationPlan : doctorPatientMedicationPlans) {
-            MedicationTime medicationTime = medicationTimeRepository.getReferenceById(doctorPatientMedicationPlan.getMedicationPlanId());
-            doctorPatientMedicationPlan.setQuantity(medicationTime.getQuantity());
-            Medication medication = medicationRepository.findMedicationBy(doctorPatientMedicationPlan.getMedicationName());
-            doctorPatientMedicationPlan.setMedicationUnitName(medication.getUnit().getName());
-        }
-        return doctorPatientMedicationPlans;
-    }
 
-    public List<PatientMedicationPlan> findPatientMedicationPlans(Integer patientId) {
+    public List<PatientMedicationPlan> findTodaysPatientMedicationPlans(Integer patientId) {
         List<MedicationPlan> medicationPlans = medicationPlanRepository.findMedicationPlansBy(patientId);
 
 
@@ -58,7 +47,7 @@ public class MedicationPlanService {
             Optional<MedicationTime> optionalMedicationTime = medicationTimeRepository.findOptionalMedicationTime(patientMedicationPlan.getMedicationPlanId(), timeNow, timeNow);
             if (optionalMedicationTime.isPresent()) {
                 LocalDateTime utcNow = LocalDateTime.now(ZoneOffset.UTC);
-                boolean medicationedTimeInLogbookExists = logbookRepository.medicationTimeInLogbookExists(me, medicationTimeId, utcNow.toLocalDate(), utcNow.toLocalTime());
+                boolean medicationedTimeInLogbookExists = logbookRepository.medicationTimeInLogbookExists(1, 1, LocalDate.now());
 
             } else {
 

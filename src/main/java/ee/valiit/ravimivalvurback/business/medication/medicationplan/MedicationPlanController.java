@@ -1,6 +1,6 @@
 package ee.valiit.ravimivalvurback.business.medication.medicationplan;
 
-import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.DoctorPatientMedicationPlan;
+import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.MedicationPlanInfo;
 import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.PatientMedicationPlan;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
@@ -16,14 +16,9 @@ import java.util.List;
 public class MedicationPlanController {
     private MedicationPlanService medicationPlanService;
 
-    @GetMapping("/medication-plans/doctor/patient")
-    public List<DoctorPatientMedicationPlan> findDoctorPatientMedicationPlans(@RequestParam Integer patientId) {
-        List<DoctorPatientMedicationPlan> medicationPlans = medicationPlanService.findDoctorPatientMedicationPlans(patientId);
-        return medicationPlans;
-    }
     @GetMapping("/medication-plans/patient")
-    public List<PatientMedicationPlan> findPatientMedicationPlans(@RequestParam Integer patientId) {
-        List<PatientMedicationPlan> patientMedicationPlans = medicationPlanService.findPatientMedicationPlans(patientId);
+    public List<PatientMedicationPlan> findTodaysPatientMedicationPlans(@RequestParam Integer patientId) {
+        List<PatientMedicationPlan> patientMedicationPlans = medicationPlanService.findTodaysPatientMedicationPlans(patientId);
         return patientMedicationPlans;
     }
 

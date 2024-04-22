@@ -2,7 +2,6 @@ package ee.valiit.ravimivalvurback.business.doctor;
 
 import ee.valiit.ravimivalvurback.business.doctor.dto.DoctorPatientInfo;
 import ee.valiit.ravimivalvurback.business.patient.dto.PatientNotInDoctorListInfo;
-import ee.valiit.ravimivalvurback.business.patient.dto.DoctorPatientInfo;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
