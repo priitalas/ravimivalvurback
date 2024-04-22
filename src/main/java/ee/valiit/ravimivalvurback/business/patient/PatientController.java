@@ -14,9 +14,9 @@ public class PatientController {
 
     private PatientService patientService;
 
-    @GetMapping("/patient")
-    public void findPatientMedications(@RequestParam Integer patientId) {
-        List<PatientInfo> patientMedications= patientService.findPatientMedications(patientId);
-        return patientMedications;
-    }
+//    @GetMapping("/patient")
+//    public void findPatientMedications(@RequestParam Integer patientId) {
+//        List<PatientInfo> patientMedications= patientService.findPatientMedications(patientId);
+//        return patientMedications;
+//    }
 }

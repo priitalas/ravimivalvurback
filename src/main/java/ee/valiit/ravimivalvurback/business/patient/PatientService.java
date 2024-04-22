@@ -12,8 +12,8 @@ public class PatientService {
 
     private final MedicationRepository medicationRepository;
 
-    public void findPatientMedications(Integer patientId) {
-        medicationRepository.findMedicationBy(patientId);
-    }
+//    public void findPatientMedications(Integer patientId) {
+//        medicationRepository.findMedicationBy(patientId);
+//    }
 
 }
