@@ -11,10 +11,10 @@ import ee.valiit.ravimivalvurback.util.StringConverter;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.ZoneOffset;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,10 +33,25 @@ public class MedicationPlanService {
 
 
 
-    public List<PatientMedicationPlan> findTodaysPatientMedicationPlans(Integer patientId) {
+    public List<PatientMedicationPlan> findPatientMedicationsToTakeNow(Integer patientId) {
         List<MedicationPlan> medicationPlans = medicationPlanRepository.findMedicationPlansBy(patientId);
+        List<PatientMedicationPlan> patientMedicationPlans = createPatientMedicationPlans(medicationPlans);
+        patientMedicationPlans = getOnlyMedicationsToTake(patientMedicationPlans);
+        return patientMedicationPlans;
+    }
+
+    private List<PatientMedicationPlan> getOnlyMedicationsToTake(List<PatientMedicationPlan> patientMedicationPlans) {
+        List<PatientMedicationPlan> onlyMedicationsToTake = new ArrayList<>();
+        for (PatientMedicationPlan patientMedicationPlan : patientMedicationPlans) {
+            if (patientMedicationPlan.getItsTimeToTakeMedication()) {
+                onlyMedicationsToTake.add(patientMedicationPlan);
+            }
+        }
+        return onlyMedicationsToTake;
+    }
 
 
+    private List<PatientMedicationPlan> createPatientMedicationPlans(List<MedicationPlan> medicationPlans) {
         List<PatientMedicationPlan> patientMedicationPlans = medicationPlanMapper.toPatientMedicationPlans(medicationPlans);
 
         for (PatientMedicationPlan patientMedicationPlan : patientMedicationPlans) {
@@ -46,19 +61,20 @@ public class MedicationPlanService {
             LocalTime timeNow = LocalTime.now();
             Optional<MedicationTime> optionalMedicationTime = medicationTimeRepository.findOptionalMedicationTime(patientMedicationPlan.getMedicationPlanId(), timeNow, timeNow);
             if (optionalMedicationTime.isPresent()) {
-                LocalDateTime utcNow = LocalDateTime.now(ZoneOffset.UTC);
-                boolean medicationedTimeInLogbookExists = logbookRepository.medicationTimeInLogbookExists(1, 1, LocalDate.now());
-
+                MedicationTime medicationTime = optionalMedicationTime.get();
+                BigDecimal quantity = medicationTime.getQuantity();
+                Integer medicationTimeId = medicationTime.getId();
+                LocalDate dateNow = LocalDate.now();
+                boolean medicationTimeInLogbookExists = logbookRepository.medicationTimeInLogbookExists(patientMedicationPlan.getMedicationPlanId(), medicationTimeId, dateNow);
+                patientMedicationPlan.setQuantity(quantity);
+                patientMedicationPlan.setMedicationTimeId(medicationTimeId);
+                patientMedicationPlan.setItsTimeToTakeMedication(!medicationTimeInLogbookExists);
             } else {
-
+                patientMedicationPlan.setItsTimeToTakeMedication(false);
             }
         }
-
-        // @Mapping(source = "", target = "quantity")
-
         return patientMedicationPlans;
     }
-
 
 
     public List<MedicationPlanInfo> findPatientMedicationPlans(Integer patientId) {
@@ -73,5 +89,16 @@ public class MedicationPlanService {
             medicationPlanInfo.setMedicationUnitName(medication.getUnit().getName());
         }
         return medicationPlanInfos;
+    }
+
+    public void logPatientTakesMedication(Integer medicationPlanId, Integer medicationTimeId) {
+        MedicationPlan medicationPlan = medicationPlanRepository.getReferenceById(medicationPlanId);
+        MedicationTime medicationTime = medicationTimeRepository.getReferenceById(medicationTimeId);
+        Logbook logbook = new Logbook();
+        logbook.setMedicationPlan(medicationPlan);
+        logbook.setMedicationTime(medicationTime);
+        logbook.setDate(LocalDate.now());
+        logbook.setTime(LocalTime.now());
+        logbookRepository.save(logbook);
     }
 }

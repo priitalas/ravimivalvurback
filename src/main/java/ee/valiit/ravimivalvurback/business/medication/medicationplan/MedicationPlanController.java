@@ -5,6 +5,7 @@ import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.Patient
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,11 +17,21 @@ import java.util.List;
 public class MedicationPlanController {
     private MedicationPlanService medicationPlanService;
 
-    @GetMapping("/medication-plans/patient")
-    public List<PatientMedicationPlan> findTodaysPatientMedicationPlans(@RequestParam Integer patientId) {
-        List<PatientMedicationPlan> patientMedicationPlans = medicationPlanService.findTodaysPatientMedicationPlans(patientId);
+    @GetMapping("/medication-plans/patient/to-take-now")
+    @Operation(summary = "Toob vastavalt patientId-le ära need ravimiplaanid, mida peab teenuse käivitamise hetke aja järgi patisent manustama")
+    public List<PatientMedicationPlan> findPatientMedicationsToTakeNow(@RequestParam Integer patientId) {
+        List<PatientMedicationPlan> patientMedicationPlans = medicationPlanService.findPatientMedicationsToTakeNow(patientId);
         return patientMedicationPlans;
     }
+
+    @PostMapping("/medication-plan/patient/take-medication-logbook")
+    @Operation(summary = "Lisab logiraamatusse patsiendi ravimi manustamise kande")
+    public void logPatientTakesMedication(@RequestParam Integer medicationPlanId, @RequestParam Integer medicationTimeId) {
+        medicationPlanService.logPatientTakesMedication(medicationPlanId, medicationTimeId);
+    }
+
+
+
 
     @GetMapping("/medication-plans/patient/{patientId}")
     @Operation(summary = "Toob vastavalt patientId-le ära kõik sellele patsiendile määratud raviplaanid")
