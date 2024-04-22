@@ -19,4 +19,10 @@ public class MedicationController {
         medicationService.addNewMedication(medicationInfo);
     }
 
+    @GetMapping("/medications")
+    @Operation(summary = "Leiab andmebaasist kõik ravimid, mille staatus on A (aktiivne)")
+    public void getAllActiveMedications() {
+        medicationService.getAllActiveMedications();
+    }
+
 }
