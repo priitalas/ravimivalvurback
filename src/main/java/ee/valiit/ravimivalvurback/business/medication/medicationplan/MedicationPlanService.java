@@ -7,10 +7,12 @@ import ee.valiit.ravimivalvurback.domain.medication.MedicationRepository;
 import ee.valiit.ravimivalvurback.domain.medication.medicationimage.MedicationImage;
 import ee.valiit.ravimivalvurback.domain.medication.medicationimage.MedicationImageRepository;
 import ee.valiit.ravimivalvurback.domain.medicationplan.*;
+import ee.valiit.ravimivalvurback.infrastructure.validation.ValidationService;
 import ee.valiit.ravimivalvurback.util.StringConverter;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import ee.valiit.ravimivalvurback.infrastructure.validation.ValidationService;
 
 import java.time.*;
 import java.util.List;
@@ -39,7 +41,7 @@ public class MedicationPlanService {
             Medication medication = medicationRepository.findMedicationBy(doctorPatientMedicationPlan.getMedicationName());
             doctorPatientMedicationPlan.setMedicationUnitName(medication.getUnit().getName());
         }
-            return doctorPatientMedicationPlans;
+        return doctorPatientMedicationPlans;
     }
 
     public List<PatientMedicationPlan> findPatientMedicationPlans(Integer patientId) {
@@ -66,5 +68,21 @@ public class MedicationPlanService {
         // @Mapping(source = "", target = "quantity")
 
         return patientMedicationPlans;
+    }
+
+
+
+    public List<MedicationPlanInfo> findPatientMedicationPlans(Integer patientId) {
+        List<MedicationPlan> medicationPlans = medicationPlanRepository.findMedicationPlansBy(patientId);
+        List<MedicationPlanInfo> medicationPlanInfos = medicationPlanMapper.toMedicationPlanInfos(medicationPlans);
+        ValidationService.validatePatientHaveMedicationPlan(medicationPlans);
+
+        for (MedicationPlanInfo medicationPlanInfo : medicationPlanInfos) {
+            MedicationTime medicationTime = medicationTimeRepository.getReferenceById(medicationPlanInfo.getMedicationPlanId());
+            medicationPlanInfo.setQuantity(medicationTime.getQuantity());
+            Medication medication = medicationRepository.findMedicationBy(medicationPlanInfo.getMedicationName());
+            medicationPlanInfo.setMedicationUnitName(medication.getUnit().getName());
+        }
+        return medicationPlanInfos;
     }
 }

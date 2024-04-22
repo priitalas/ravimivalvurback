@@ -15,6 +15,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class DoctorPatientInfo implements Serializable {
     private Integer patientId;
+    private String patientStatus;
     private String firstName;
     private String lastName;
 }
