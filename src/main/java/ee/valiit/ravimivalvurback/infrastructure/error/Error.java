@@ -9,7 +9,9 @@ public enum Error {
     USER_UNAVAILABLE("Sellise nimega kasutaja on juba registreeritud", 333),
     MEDICINE_UNAVAILABLE("Sellise nimega ravim on juba lisatud", 444),
     UNIT_UNAVAILABLE("Selline ühik on juba olemas", 555),
-    NO_PATIENTS_FOUND("Teil ei ole veel ühtegi patsienti", 666);
+    NO_PATIENTS_FOUND("Teil ei ole nimekirjas veel ühtegi patsienti", 666),
+    NO_MEDICATIONPLAN_FOUND("Patsiendile ei ole veel ühtegi ravimit määratud", 777),
+    NO_PATIENTS_FOUND_TO_ADD ("Teil ei ole patsiente, keda lisada", 888);
 
     private final String message;
     private final int errorCode;

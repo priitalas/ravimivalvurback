@@ -25,6 +25,7 @@ CREATE TABLE doctor_patient (
 CREATE TABLE logbook (
                          id serial  NOT NULL,
                          medication_plan_id int  NOT NULL,
+                         medication_time_id int  NOT NULL,
                          date date  NOT NULL,
                          time time  NOT NULL,
                          CONSTRAINT logbook_pk PRIMARY KEY (id)
@@ -127,6 +128,14 @@ ALTER TABLE doctor_patient ADD CONSTRAINT doctor_user
 ALTER TABLE logbook ADD CONSTRAINT logbook_medication_plan
     FOREIGN KEY (medication_plan_id)
         REFERENCES medication_plan (id)
+        NOT DEFERRABLE
+            INITIALLY IMMEDIATE
+;
+
+-- Reference: logbook_medication_plan (table: logbook)
+ALTER TABLE logbook ADD CONSTRAINT logbook_medication_time
+    FOREIGN KEY (medication_time_id)
+        REFERENCES medication_time (id)
         NOT DEFERRABLE
             INITIALLY IMMEDIATE
 ;
