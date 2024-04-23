@@ -19,11 +19,6 @@ public class NewMedicationPlanInfo implements Serializable {
     private Integer patientId;
     private Integer medicationId;
     private Integer medicationUnitId;
-    @NotNull
-    private Integer frequency;
-    @NotNull
-    private BigDecimal quantity;
-    @NotNull
     private LocalDate periodStart;
     @NotNull
     private LocalDate periodEnd;

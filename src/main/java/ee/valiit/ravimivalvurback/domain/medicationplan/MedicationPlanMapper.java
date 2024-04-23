@@ -35,7 +35,6 @@ public interface MedicationPlanMapper {
     List<MedicationPlanInfo> toMedicationPlanInfos(List<MedicationPlan> medicationPlan);
 
     @Mapping(source="patientId", target ="patient.id")
-    @Mapping(source="frequency", target ="frequency")
     @Mapping(source="periodEnd", target ="periodEnd")
     @Mapping(source="periodStart", target ="periodStart")
     MedicationPlan toMedicationPlan(NewMedicationPlanInfo newMedicationPlanInfo);

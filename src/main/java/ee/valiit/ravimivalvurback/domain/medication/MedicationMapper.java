@@ -21,7 +21,6 @@ public interface MedicationMapper {
    @Mapping(source = "id", target = "medicationId")
    @Mapping(source = "name", target = "medicationName")
    @Mapping(source = "unit.name", target = "unitName")
-   @Mapping(source = "unit.id", target = "unitId")
    MedicationsInfo toMedicationsInfo(Medication medication);
    List<MedicationsInfo> toMedicationsInfos(List<Medication> medications);
 

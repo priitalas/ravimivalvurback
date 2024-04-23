@@ -29,7 +29,9 @@ public class MedicationPlanController {
     }
 
     @PostMapping("/medication-plans/patient/")
-    public void addNewMedicationPlan(@RequestBody NewMedicationPlanInfo newMedicationPlanInfo) {
-        medicationPlanService.addNewMedicationPlan(newMedicationPlanInfo);
+    @Operation(summary = "Lisab patsiendile uue ravikuuri")
+    public Integer addNewMedicationPlan(@RequestBody NewMedicationPlanInfo newMedicationPlanInfo) {
+        return medicationPlanService.addNewMedicationPlan(newMedicationPlanInfo);
     }
+
 }

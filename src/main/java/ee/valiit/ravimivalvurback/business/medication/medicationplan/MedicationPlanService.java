@@ -71,10 +71,11 @@ public class MedicationPlanService {
         return medicationPlanInfos;
     }
 
-    public void addNewMedicationPlan(NewMedicationPlanInfo newMedicationPlanInfo) {
+    public Integer addNewMedicationPlan(NewMedicationPlanInfo newMedicationPlanInfo) {
         Medication medication = medicationRepository.getReferenceById(newMedicationPlanInfo.getMedicationId());
         MedicationPlan medicationPlan = medicationPlanMapper.toMedicationPlan(newMedicationPlanInfo);
         medicationPlan.setMedication(medication);
         medicationPlanRepository.save(medicationPlan);
+        return medicationPlan.getId();
     }
 }
