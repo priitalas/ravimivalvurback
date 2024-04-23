@@ -11,5 +11,9 @@ public interface DoctorPatientMapper {
     @Mapping(source = "status", target = "patientStatus")
     DoctorPatientInfo toDoctorPatientInfo(DoctorPatient doctorPatient);
 
-    List<DoctorPatientInfo> toDoctorPatientInfos(List<DoctorPatient> doctorPatient);
+    List<DoctorPatientInfo> toDoctorPatientInfos(List<DoctorPatient> doctorPatients);
+
+
+
+
 }

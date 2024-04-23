@@ -1,6 +1,5 @@
 package ee.valiit.ravimivalvurback.domain.medicationplan;
 
-import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.DoctorPatientMedicationPlan;
 import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.MedicationPlanInfo;
 import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.PatientMedicationPlan;
 import org.mapstruct.*;
