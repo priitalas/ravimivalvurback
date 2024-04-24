@@ -1,8 +1,8 @@
 package ee.valiit.ravimivalvurback.domain.medicationplan;
 
+import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.AddedMedicationPlansInfo;
 import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.MedicationPlanInfo;
 import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.NewMedicationPlanInfo;
-import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.NewMedicationPlansInfo;
 import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.PatientMedicationPlan;
 import ee.valiit.ravimivalvurback.domain.Status;
 import org.mapstruct.Mapper;
@@ -47,8 +47,8 @@ public interface MedicationPlanMapper {
     @Mapping(source = "periodStart", target = "periodStart")
     @Mapping(source = "periodEnd", target = "periodEnd")
     @Mapping(source = "frequency", target = "frequency")
-    NewMedicationPlansInfo toNewMedicationPlansInfo(MedicationPlan medicationPlan);
-    List<NewMedicationPlansInfo> toNewMedicationPlansInfos(List<MedicationPlan> medicationPlan);
+    AddedMedicationPlansInfo toNewMedicationPlansInfo(MedicationPlan medicationPlan);
+    List<AddedMedicationPlansInfo> toNewMedicationPlansInfos(List<MedicationPlan> medicationPlan);
 
 
 }

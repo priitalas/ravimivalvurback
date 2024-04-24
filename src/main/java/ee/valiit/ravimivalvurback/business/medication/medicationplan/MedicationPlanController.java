@@ -1,8 +1,8 @@
 package ee.valiit.ravimivalvurback.business.medication.medicationplan;
 
+import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.AddedMedicationPlansInfo;
 import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.MedicationPlanInfo;
 import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.NewMedicationPlanInfo;
-import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.NewMedicationPlansInfo;
 import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.PatientMedicationPlan;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
@@ -47,11 +47,11 @@ public class MedicationPlanController {
         medicationPlanService.addNewMedicationPlan(newMedicationPlanInfo);
     }
 
-    @GetMapping("/medication-plans/patient/")
+    @GetMapping("/medication-plans/patient/new-plans/")
     @Operation(summary = "Toob vastavalt patsiendiId-le ära ravikuurid, millele ei ole veel võtmise aegu sisestatud (frequency=0)")
-    public List<NewMedicationPlansInfo> findPatientMedicationPlansWithoutTimeslots(@RequestParam Integer patientId) {
-        List<NewMedicationPlansInfo> newMedicationPlans = medicationPlanService.findPatientMedicationPlansWithoutTimeslots(patientId);
-        return newMedicationPlans;
+    public List<AddedMedicationPlansInfo> findPatientMedicationPlansWithoutTimeslots(@RequestParam Integer patientId) {
+        List<AddedMedicationPlansInfo> addedMedicationPlans = medicationPlanService.findPatientMedicationPlansWithoutTimeslots(patientId);
+        return addedMedicationPlans;
     }
 
 }

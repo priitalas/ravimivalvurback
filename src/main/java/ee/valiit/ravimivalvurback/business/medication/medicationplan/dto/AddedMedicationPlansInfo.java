@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class NewMedicationPlansInfo implements Serializable {
+public class AddedMedicationPlansInfo implements Serializable {
     private Integer medicationPlanId;
     private String medicationName;
     private Integer frequency;

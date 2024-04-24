@@ -1,8 +1,8 @@
 package ee.valiit.ravimivalvurback.business.medication.medicationplan;
 
+import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.AddedMedicationPlansInfo;
 import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.MedicationPlanInfo;
 import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.NewMedicationPlanInfo;
-import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.NewMedicationPlansInfo;
 import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.PatientMedicationPlan;
 import ee.valiit.ravimivalvurback.domain.medication.Medication;
 import ee.valiit.ravimivalvurback.domain.medication.MedicationRepository;
@@ -117,9 +117,9 @@ public class MedicationPlanService {
         medicationPlanRepository.save(medicationPlan);
     }
 
-    public List<NewMedicationPlansInfo> findPatientMedicationPlansWithoutTimeslots(Integer patientId) {
+    public List<AddedMedicationPlansInfo> findPatientMedicationPlansWithoutTimeslots(Integer patientId) {
         List<MedicationPlan> medicationPlans = medicationPlanRepository.findNewMedicationPlansBy(patientId);
-        List<NewMedicationPlansInfo> newMedicationPlansInfos = medicationPlanMapper.toNewMedicationPlansInfos(medicationPlans);
-        return newMedicationPlansInfos;
+        List<AddedMedicationPlansInfo> addedMedicationPlansInfos = medicationPlanMapper.toNewMedicationPlansInfos(medicationPlans);
+        return addedMedicationPlansInfos;
     }
 }
