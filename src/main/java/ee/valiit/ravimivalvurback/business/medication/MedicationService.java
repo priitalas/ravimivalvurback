@@ -1,6 +1,7 @@
 package ee.valiit.ravimivalvurback.business.medication;
 
 import ee.valiit.ravimivalvurback.business.medication.dto.MedicationInfo;
+import ee.valiit.ravimivalvurback.business.medication.dto.MedicationInfoExtended;
 import ee.valiit.ravimivalvurback.business.medication.dto.MedicationsInfo;
 import ee.valiit.ravimivalvurback.domain.medication.Medication;
 import ee.valiit.ravimivalvurback.domain.medication.MedicationMapper;
@@ -40,13 +41,31 @@ public class MedicationService {
     }
 
     public void addMedicationImage(MedicationInfo medicationInfo, Medication medication) {
-       MedicationImage medicationImage = medicationImageMapper.toMedicationImage(medicationInfo);
-       medicationImage.setMedication(medication);
-       medicationImageRepository.save(medicationImage);
+        MedicationImage medicationImage = medicationImageMapper.toMedicationImage(medicationInfo);
+        medicationImage.setMedication(medication);
+        medicationImageRepository.save(medicationImage);
     }
 
     public List<MedicationsInfo> getAllActiveMedications() {
         List<Medication> medications = medicationRepository.findMedicationsBy("A");
         return medicationMapper.toMedicationsInfos(medications);
     }
+
+    public void getExtendedMedicationInfo(Integer medicationId) {
+        Medication medication = medicationRepository.getReferenceById(medicationId);
+    }
+
+
+//    public MedicationInfoExtended getExtendedMedicationInfo(Integer medicationId) {
+//        Medication medication = medicationRepository.getReferenceById(medicationId);
+//
+//        MedicationInfoExtended medicationInfoExtended = medicationMapper.toMedicationInfoExtended(medication);
+//
+//        medicationInfoExtended.setName();
+//        medicationInfoExtended.setNote();
+//        medicationInfoExtended.setDescription();
+//
+//        return medicationInfoExtended;
+//    }
+
 }
