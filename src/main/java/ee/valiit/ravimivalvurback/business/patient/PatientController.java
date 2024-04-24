@@ -2,6 +2,7 @@ package ee.valiit.ravimivalvurback.business.patient;
 
 import ee.valiit.ravimivalvurback.business.medication.medicationplan.MedicationPlanService;
 import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.MedicationPlanInfo;
+import ee.valiit.ravimivalvurback.business.patient.dto.PatientDoctorInfo;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,8 +28,8 @@ public class PatientController {
 
     @GetMapping("/patient/doctor")
     @Operation(summary = "Kontrollib patientId järgi patsiendi staatust doctor_patient tabelis")
-    public void findPatientPendingStatus(@RequestParam Integer patientId) {
-        patientService.findPatientPendingStatus(patientId);
+    public PatientDoctorInfo findPatientPendingStatus(@RequestParam Integer patientId) {
+       return patientService.findPatientPendingStatus(patientId);
     }
 
 
