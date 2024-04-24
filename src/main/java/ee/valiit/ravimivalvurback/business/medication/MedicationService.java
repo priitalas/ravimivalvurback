@@ -1,6 +1,7 @@
 package ee.valiit.ravimivalvurback.business.medication;
 
 import ee.valiit.ravimivalvurback.business.medication.dto.MedicationInfo;
+import ee.valiit.ravimivalvurback.business.medication.dto.MedicationsInfo;
 import ee.valiit.ravimivalvurback.domain.medication.Medication;
 import ee.valiit.ravimivalvurback.domain.medication.MedicationMapper;
 import ee.valiit.ravimivalvurback.domain.medication.MedicationRepository;
@@ -10,8 +11,12 @@ import ee.valiit.ravimivalvurback.domain.medication.medicationimage.MedicationIm
 import ee.valiit.ravimivalvurback.domain.medication.unit.Unit;
 import ee.valiit.ravimivalvurback.domain.medication.unit.UnitRepository;
 import ee.valiit.ravimivalvurback.infrastructure.validation.ValidationService;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -23,7 +28,7 @@ public class MedicationService {
     private final MedicationImageMapper medicationImageMapper;
     private final MedicationImageRepository medicationImageRepository;
 
-    public void addNewMedication(MedicationInfo medicationInfo) {
+    public Integer addNewMedication(MedicationInfo medicationInfo) {
         boolean medicineAlreadyExists = medicationRepository.medicineAlreadyExists(medicationInfo.getMedicationName());
         ValidationService.validateMedicineNameAvailable(medicineAlreadyExists);
         Unit unit = unitRepository.getReferenceById(medicationInfo.getUnitId());
@@ -31,14 +36,17 @@ public class MedicationService {
         medication.setUnit(unit);
         medicationRepository.save(medication);
         addMedicationImage(medicationInfo, medication);
+        return medication.getId();
     }
 
     public void addMedicationImage(MedicationInfo medicationInfo, Medication medication) {
-
        MedicationImage medicationImage = medicationImageMapper.toMedicationImage(medicationInfo);
        medicationImage.setMedication(medication);
        medicationImageRepository.save(medicationImage);
     }
 
-
+    public List<MedicationsInfo> getAllActiveMedications() {
+        List<Medication> medications = medicationRepository.findMedicationsBy("A");
+        return medicationMapper.toMedicationsInfos(medications);
+    }
 }
