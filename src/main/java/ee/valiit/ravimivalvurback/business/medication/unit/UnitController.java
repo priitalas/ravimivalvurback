@@ -12,15 +12,16 @@ import java.util.List;
 public class UnitController {
 
     private UnitService unitService;
+
     @GetMapping("/units")
     @Operation(summary = "Toob ära kõik andmebaasis olevad ravimite ühikud")
-    public List<UnitInfo> getUnits(){
+    public List<UnitInfo> getUnits() {
         return unitService.getUnits();
     }
 
     @PostMapping("/unit")
     @Operation(summary = "Lisab ühiku")
-    public Integer addNewUnit(@RequestParam String unitName){
+    public Integer addNewUnit(@RequestParam String unitName) {
         return unitService.addNewUnit(unitName);
     }
 
