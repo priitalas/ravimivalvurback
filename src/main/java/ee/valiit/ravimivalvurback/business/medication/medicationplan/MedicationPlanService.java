@@ -1,11 +1,13 @@
 package ee.valiit.ravimivalvurback.business.medication.medicationplan;
 
 import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.MedicationPlanInfo;
+import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.NewMedicationPlanInfo;
 import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.PatientMedicationPlan;
 import ee.valiit.ravimivalvurback.domain.medication.Medication;
 import ee.valiit.ravimivalvurback.domain.medication.MedicationRepository;
 import ee.valiit.ravimivalvurback.domain.medication.medicationimage.MedicationImageRepository;
 import ee.valiit.ravimivalvurback.domain.medicationplan.*;
+import ee.valiit.ravimivalvurback.domain.user.UserRepository;
 import ee.valiit.ravimivalvurback.infrastructure.validation.ValidationService;
 import ee.valiit.ravimivalvurback.util.StringConverter;
 import lombok.AllArgsConstructor;
@@ -29,8 +31,7 @@ public class MedicationPlanService {
     private final MedicationRepository medicationRepository;
     private final MedicationImageRepository medicationImageRepository;
     private final LogbookRepository logbookRepository;
-
-
+    private final UserRepository userRepository;
 
 
     public List<PatientMedicationPlan> findPatientMedicationsToTakeNow(Integer patientId) {
@@ -73,8 +74,12 @@ public class MedicationPlanService {
                 patientMedicationPlan.setItsTimeToTakeMedication(false);
             }
         }
+
+        // @Mapping(source = "", target = "quantity")
+
         return patientMedicationPlans;
     }
+
 
 
     public List<MedicationPlanInfo> findPatientMedicationPlans(Integer patientId) {
@@ -100,5 +105,13 @@ public class MedicationPlanService {
         logbook.setDate(LocalDate.now());
         logbook.setTime(LocalTime.now());
         logbookRepository.save(logbook);
+    }
+
+    public Integer addNewMedicationPlan(NewMedicationPlanInfo newMedicationPlanInfo) {
+        Medication medication = medicationRepository.getReferenceById(newMedicationPlanInfo.getMedicationId());
+        MedicationPlan medicationPlan = medicationPlanMapper.toMedicationPlan(newMedicationPlanInfo);
+        medicationPlan.setMedication(medication);
+        medicationPlanRepository.save(medicationPlan);
+        return medicationPlan.getId();
     }
 }

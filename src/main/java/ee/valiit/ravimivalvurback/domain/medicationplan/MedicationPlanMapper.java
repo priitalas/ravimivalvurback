@@ -1,9 +1,12 @@
 package ee.valiit.ravimivalvurback.domain.medicationplan;
 
-import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.DoctorPatientMedicationPlan;
 import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.MedicationPlanInfo;
+import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.NewMedicationPlanInfo;
 import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.PatientMedicationPlan;
-import org.mapstruct.*;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingConstants;
+import org.mapstruct.ReportingPolicy;
 
 import java.util.List;
 
@@ -30,6 +33,11 @@ public interface MedicationPlanMapper {
     MedicationPlanInfo toMedicationPlanInfo(MedicationPlan medicationPlan);
 
     List<MedicationPlanInfo> toMedicationPlanInfos(List<MedicationPlan> medicationPlan);
+
+    @Mapping(source="patientId", target ="patient.id")
+    @Mapping(source="periodEnd", target ="periodEnd")
+    @Mapping(source="periodStart", target ="periodStart")
+    MedicationPlan toMedicationPlan(NewMedicationPlanInfo newMedicationPlanInfo);
 
 
 }
