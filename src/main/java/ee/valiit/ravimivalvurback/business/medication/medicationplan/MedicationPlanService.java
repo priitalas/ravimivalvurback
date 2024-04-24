@@ -20,7 +20,6 @@ import java.util.Optional;
 
 @Service
 @AllArgsConstructor
-
 public class MedicationPlanService {
 
     private final MedicationPlanRepository medicationPlanRepository;
@@ -31,6 +30,20 @@ public class MedicationPlanService {
     private final LogbookRepository logbookRepository;
 
 
+
+    public List<MedicationPlanInfo> findPatientMedicationPlans(Integer patientId) {
+        List<MedicationPlan> medicationPlans = medicationPlanRepository.findMedicationPlansBy(patientId);
+        List<MedicationPlanInfo> medicationPlanInfos = medicationPlanMapper.toMedicationPlanInfos(medicationPlans);
+        ValidationService.validatePatientHaveMedicationPlan(medicationPlans);
+
+        for (MedicationPlanInfo medicationPlanInfo : medicationPlanInfos) {
+            MedicationTime medicationTime = medicationTimeRepository.getReferenceById(medicationPlanInfo.getMedicationPlanId());
+            medicationPlanInfo.setQuantity(medicationTime.getQuantity());
+            Medication medication = medicationRepository.findMedicationBy(medicationPlanInfo.getMedicationName());
+            medicationPlanInfo.setMedicationUnitName(medication.getUnit().getName());
+        }
+        return medicationPlanInfos;
+    }
 
 
     public List<PatientMedicationPlan> findPatientMedicationsToTakeNow(Integer patientId) {
@@ -77,28 +90,4 @@ public class MedicationPlanService {
     }
 
 
-    public List<MedicationPlanInfo> findPatientMedicationPlans(Integer patientId) {
-        List<MedicationPlan> medicationPlans = medicationPlanRepository.findMedicationPlansBy(patientId);
-        List<MedicationPlanInfo> medicationPlanInfos = medicationPlanMapper.toMedicationPlanInfos(medicationPlans);
-        ValidationService.validatePatientHaveMedicationPlan(medicationPlans);
-
-        for (MedicationPlanInfo medicationPlanInfo : medicationPlanInfos) {
-            MedicationTime medicationTime = medicationTimeRepository.getReferenceById(medicationPlanInfo.getMedicationPlanId());
-            medicationPlanInfo.setQuantity(medicationTime.getQuantity());
-            Medication medication = medicationRepository.findMedicationBy(medicationPlanInfo.getMedicationName());
-            medicationPlanInfo.setMedicationUnitName(medication.getUnit().getName());
-        }
-        return medicationPlanInfos;
-    }
-
-    public void logPatientTakesMedication(Integer medicationPlanId, Integer medicationTimeId) {
-        MedicationPlan medicationPlan = medicationPlanRepository.getReferenceById(medicationPlanId);
-        MedicationTime medicationTime = medicationTimeRepository.getReferenceById(medicationTimeId);
-        Logbook logbook = new Logbook();
-        logbook.setMedicationPlan(medicationPlan);
-        logbook.setMedicationTime(medicationTime);
-        logbook.setDate(LocalDate.now());
-        logbook.setTime(LocalTime.now());
-        logbookRepository.save(logbook);
-    }
 }

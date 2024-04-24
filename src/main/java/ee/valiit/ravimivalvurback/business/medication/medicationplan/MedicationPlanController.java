@@ -13,7 +13,6 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-
 public class MedicationPlanController {
     private MedicationPlanService medicationPlanService;
 
@@ -24,11 +23,7 @@ public class MedicationPlanController {
         return patientMedicationPlans;
     }
 
-    @PostMapping("/medication-plan/patient/take-medication-logbook")
-    @Operation(summary = "Lisab logiraamatusse patsiendi ravimi manustamise kande")
-    public void logPatientTakesMedication(@RequestParam Integer medicationPlanId, @RequestParam Integer medicationTimeId) {
-        medicationPlanService.logPatientTakesMedication(medicationPlanId, medicationTimeId);
-    }
+
 
 
 

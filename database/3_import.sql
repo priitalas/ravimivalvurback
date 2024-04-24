@@ -49,10 +49,10 @@ INSERT INTO ravim.medication (id, unit_id, name, note, description, status) VALU
 INSERT INTO ravim.medication_plan (id, patient_id, medication_id, frequency, period_start, period_end, status) VALUES (default, 2, 1, 3, '2024-04-15', '2024-05-01', 'A');
 INSERT INTO ravim.medication_plan (id, patient_id, medication_id, frequency, period_start, period_end, status) VALUES (default, 2, 2, 2, '2024-04-15', '2024-05-01', 'A');
 
-INSERT INTO ravim.medication_time (id, medication_plan_id, slot_start, slot_end, quantity) VALUES (default, 1, '10:00:00', '12:00:00', 2.00);
-INSERT INTO ravim.medication_time (id, medication_plan_id, slot_start, slot_end, quantity) VALUES (default, 1, '14:00:00', '16:00:00', 2.00);
-INSERT INTO ravim.medication_time (id, medication_plan_id, slot_start, slot_end, quantity) VALUES (default, 2, '10:00:00', '12:00:00', 1.00);
-INSERT INTO ravim.medication_time (id, medication_plan_id, slot_start, slot_end, quantity) VALUES (default, 2, '14:00:00', '16:00:00', 1.00);
+INSERT INTO ravim.medication_time (id, medication_plan_id, slot_start, slot_end, quantity) VALUES (default, 1, '08:00:00', '12:00:00', 2.00);
+INSERT INTO ravim.medication_time (id, medication_plan_id, slot_start, slot_end, quantity) VALUES (default, 1, '12:00:00', '18:00:00', 2.00);
+INSERT INTO ravim.medication_time (id, medication_plan_id, slot_start, slot_end, quantity) VALUES (default, 2, '08:00:00', '12:00:00', 1.00);
+INSERT INTO ravim.medication_time (id, medication_plan_id, slot_start, slot_end, quantity) VALUES (default, 2, '12:00:00', '18:00:00', 1.00);
 
 
 
