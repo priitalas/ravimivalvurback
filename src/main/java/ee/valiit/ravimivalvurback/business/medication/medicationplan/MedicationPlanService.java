@@ -7,6 +7,7 @@ import ee.valiit.ravimivalvurback.domain.medication.Medication;
 import ee.valiit.ravimivalvurback.domain.medication.MedicationRepository;
 import ee.valiit.ravimivalvurback.domain.medication.medicationimage.MedicationImageRepository;
 import ee.valiit.ravimivalvurback.domain.medicationplan.*;
+import ee.valiit.ravimivalvurback.domain.user.User;
 import ee.valiit.ravimivalvurback.domain.user.UserRepository;
 import ee.valiit.ravimivalvurback.infrastructure.validation.ValidationService;
 import ee.valiit.ravimivalvurback.util.StringConverter;
@@ -88,8 +89,7 @@ public class MedicationPlanService {
         ValidationService.validatePatientHaveMedicationPlan(medicationPlans);
 
         for (MedicationPlanInfo medicationPlanInfo : medicationPlanInfos) {
-            MedicationTime medicationTime = medicationTimeRepository.getReferenceById(medicationPlanInfo.getMedicationPlanId());
-            medicationPlanInfo.setQuantity(medicationTime.getQuantity());
+            // MedicationTime medicationTime = medicationTimeRepository.getReferenceById(medicationPlanInfo.getMedicationPlanId());
             Medication medication = medicationRepository.findMedicationBy(medicationPlanInfo.getMedicationName());
             medicationPlanInfo.setMedicationUnitName(medication.getUnit().getName());
         }
@@ -107,11 +107,13 @@ public class MedicationPlanService {
         logbookRepository.save(logbook);
     }
 
-    public Integer addNewMedicationPlan(NewMedicationPlanInfo newMedicationPlanInfo) {
+    public void addNewMedicationPlan(NewMedicationPlanInfo newMedicationPlanInfo) {
         Medication medication = medicationRepository.getReferenceById(newMedicationPlanInfo.getMedicationId());
+        User user = userRepository.getReferenceById(newMedicationPlanInfo.getPatientId());
         MedicationPlan medicationPlan = medicationPlanMapper.toMedicationPlan(newMedicationPlanInfo);
         medicationPlan.setMedication(medication);
+        medicationPlan.setPatient(user);
+        medicationPlan.setFrequency(0);
         medicationPlanRepository.save(medicationPlan);
-        return medicationPlan.getId();
     }
 }

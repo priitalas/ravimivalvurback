@@ -24,8 +24,6 @@ public class MedicationPlanInfo implements Serializable {
     @NotNull
     private Integer frequency;
     @NotNull
-    private BigDecimal quantity;
-    @NotNull
     private LocalDate periodStart;
     @NotNull
     private LocalDate periodEnd;

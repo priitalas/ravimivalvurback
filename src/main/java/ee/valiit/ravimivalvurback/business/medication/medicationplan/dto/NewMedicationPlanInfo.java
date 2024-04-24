@@ -18,8 +18,6 @@ import java.time.LocalDate;
 public class NewMedicationPlanInfo implements Serializable {
     private Integer patientId;
     private Integer medicationId;
-    private Integer medicationUnitId;
     private LocalDate periodStart;
-    @NotNull
     private LocalDate periodEnd;
 }
