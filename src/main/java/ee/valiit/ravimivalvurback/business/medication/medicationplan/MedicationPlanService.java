@@ -2,6 +2,7 @@ package ee.valiit.ravimivalvurback.business.medication.medicationplan;
 
 import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.MedicationPlanInfo;
 import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.NewMedicationPlanInfo;
+import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.NewMedicationPlansInfo;
 import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.PatientMedicationPlan;
 import ee.valiit.ravimivalvurback.domain.medication.Medication;
 import ee.valiit.ravimivalvurback.domain.medication.MedicationRepository;
@@ -82,7 +83,6 @@ public class MedicationPlanService {
     }
 
 
-
     public List<MedicationPlanInfo> findPatientMedicationPlans(Integer patientId) {
         List<MedicationPlan> medicationPlans = medicationPlanRepository.findMedicationPlansBy(patientId);
         List<MedicationPlanInfo> medicationPlanInfos = medicationPlanMapper.toMedicationPlanInfos(medicationPlans);
@@ -115,5 +115,11 @@ public class MedicationPlanService {
         medicationPlan.setPatient(user);
         medicationPlan.setFrequency(0);
         medicationPlanRepository.save(medicationPlan);
+    }
+
+    public List<NewMedicationPlansInfo> findPatientMedicationPlansWithoutTimeslots(Integer patientId) {
+        List<MedicationPlan> medicationPlans = medicationPlanRepository.findNewMedicationPlansBy(patientId);
+        List<NewMedicationPlansInfo> newMedicationPlansInfos = medicationPlanMapper.toNewMedicationPlansInfos(medicationPlans);
+        return newMedicationPlansInfos;
     }
 }

@@ -5,6 +5,7 @@ import ee.valiit.ravimivalvurback.business.doctor.dto.DoctorPatientInfo;
 import ee.valiit.ravimivalvurback.business.patient.dto.PatientNotInDoctorListInfo;
 import ee.valiit.ravimivalvurback.domain.user.User;
 import ee.valiit.ravimivalvurback.domain.user.contact.Contact;
+import ee.valiit.ravimivalvurback.domain.user.contact.ContactMapper;
 import ee.valiit.ravimivalvurback.domain.user.contact.ContactRepository;
 import ee.valiit.ravimivalvurback.domain.user.doctor.DoctorPatient;
 import ee.valiit.ravimivalvurback.domain.user.doctor.DoctorPatientMapper;
@@ -20,8 +21,10 @@ import java.util.List;
 @AllArgsConstructor
 public class DoctorService {
     private DoctorPatientRepository doctorPatientRepository;
-    private ContactRepository contactRepository;
     private DoctorPatientMapper doctorPatientMapper;
+    private ContactRepository contactRepository;
+    private ContactMapper contactMapper;
+
 
     public List<DoctorPatientInfo> findPatientsInDoctorsList(Integer doctorId) {
         List<DoctorPatient> doctorPatients = doctorPatientRepository.findPatientsBy(doctorId);
@@ -68,4 +71,5 @@ public class DoctorService {
     public void deletePatientFromDoctorList(Integer patientId, Integer doctorId) {
         doctorPatientRepository.deleteFromTableBy(doctorId, patientId);
     }
+
 }
