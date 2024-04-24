@@ -1,5 +1,6 @@
 package ee.valiit.ravimivalvurback.business.medication.medicationplan;
 
+import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.AddedMedicationPlansInfo;
 import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.MedicationPlanInfo;
 import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.NewMedicationPlanInfo;
 import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.PatientMedicationPlan;
@@ -15,6 +16,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
+
 public class MedicationPlanController {
     private MedicationPlanService medicationPlanService;
 
@@ -25,7 +27,11 @@ public class MedicationPlanController {
         return patientMedicationPlans;
     }
 
-
+    @PostMapping("/medication-plan/patient/take-medication-logbook")
+    @Operation(summary = "Lisab logiraamatusse patsiendi ravimi manustamise kande")
+    public void logPatientTakesMedication(@RequestParam Integer medicationPlanId, @RequestParam Integer medicationTimeId) {
+        medicationPlanService.logPatientTakesMedication(medicationPlanId, medicationTimeId);
+    }
 
 
     @GetMapping("/medication-plans/patient/{patientId}")
@@ -35,12 +41,17 @@ public class MedicationPlanController {
         return medicationPlans;
     }
 
+    @PostMapping("/medication-plans/patient/")
+    @Operation(summary = "Lisab patsiendile uue ravikuuri")
+    public void addNewMedicationPlan(@RequestBody NewMedicationPlanInfo newMedicationPlanInfo) {
+        medicationPlanService.addNewMedicationPlan(newMedicationPlanInfo);
+    }
 
-
-//    @PostMapping("/medication-plans/patient/")
-//    @Operation(summary = "Lisab patsiendile uue ravikuuri")
-//    public Integer addNewMedicationPlan(@RequestBody NewMedicationPlanInfo newMedicationPlanInfo) {
-//        return medicationPlanService.addNewMedicationPlan(newMedicationPlanInfo);
-//    }
+    @GetMapping("/medication-plans/patient/new-plans/")
+    @Operation(summary = "Toob vastavalt patsiendiId-le ära ravikuurid, millele ei ole veel võtmise aegu sisestatud (frequency=0)")
+    public List<AddedMedicationPlansInfo> findPatientMedicationPlansWithoutTimeslots(@RequestParam Integer patientId) {
+        List<AddedMedicationPlansInfo> addedMedicationPlans = medicationPlanService.findPatientMedicationPlansWithoutTimeslots(patientId);
+        return addedMedicationPlans;
+    }
 
 }
