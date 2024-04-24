@@ -27,10 +27,12 @@ public interface ContactMapper {
     List<PatientNotInDoctorListInfo> toAllPatientsInfos(List<Contact> allPatients);
 
 
-    @Mapping(source = "user.id", target = "doctorId")
-    @Mapping(source = "firstName", target = "firstName")
-    @Mapping(source = "lastName", target = "lastName")
+    @Mapping(source = "user.id", target = "doctorPatientId")
+    @Mapping(source = "firstName", target = "doctorFirstName")
+    @Mapping(source = "lastName", target = "doctorLastName")
     PatientDoctorInfo toPatientDoctorInfo(Contact contact);
+
+
 
 
 

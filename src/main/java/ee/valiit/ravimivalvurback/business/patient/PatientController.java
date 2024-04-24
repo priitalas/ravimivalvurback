@@ -6,6 +6,7 @@ import ee.valiit.ravimivalvurback.business.patient.dto.PatientDoctorInfo;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,17 +29,24 @@ public class PatientController {
 
     @GetMapping("/patient/doctor")
     @Operation(summary = "Kontrollib patientId järgi patsiendi staatust doctor_patient tabelis")
-    public PatientDoctorInfo findPatientPendingStatus(@RequestParam Integer patientId) {
-       return patientService.findPatientPendingStatus(patientId);
+    public PatientDoctorInfo getPatientDoctorRelationshipRequest(@RequestParam Integer patientId) {
+        return patientService.getPatientDoctorRelationshipRequest(patientId);
+    }
+    @PutMapping("/patient/doctor")
+    @Operation(summary = "Patsient aksepteerib doctorPatientId abil arsti")
+    public void patientAcceptsDoctorRelationshipRequest(@RequestParam Integer doctorPatientId) {
+        patientService.patientAcceptsDoctorRelationshipRequest(doctorPatientId);
     }
 
 
 
-    //  public void findPatientMedications(@RequestParam Integer patientId) {
-    //  List<PatientMedicationInfo> patientMedicationInfos =  patientService.findPatientMedications(patientId);
-    //return patientMedicationInfos;
 
-}
+
+//    public void findPatientMedications(@RequestParam Integer patientId) {
+//        List<PatientMedicationInfo> patientMedicationInfos = patientService.findPatientMedications(patientId);
+//        return patientMedicationInfos;
+
+    }
 //    @GetMapping("/patient")
 //    public void findPatientMedications(@RequestParam Integer patientId) {
 //        List<PatientInfo> patientMedications= patientService.findPatientMedications(patientId);

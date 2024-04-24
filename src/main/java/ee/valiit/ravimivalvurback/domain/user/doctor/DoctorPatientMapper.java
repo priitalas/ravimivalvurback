@@ -15,8 +15,9 @@ public interface DoctorPatientMapper {
     List<DoctorPatientInfo> toDoctorPatientInfos(List<DoctorPatient> doctorPatients);
 
 
-    @Mapping(source = "doctor.id", target = "doctorId")
+    @Mapping(source = "id", target = "doctorPatientId")
     PatientDoctorInfo toPatientDoctorInfo(DoctorPatient doctorPatient);
+
 
 
 

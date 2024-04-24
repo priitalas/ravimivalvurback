@@ -25,4 +25,11 @@ public interface MedicationMapper {
    List<MedicationsInfo> toMedicationsInfos(List<Medication> medications);
 
 
+//    @Mapping(source = "name", target = "medicationName")
+//    @Mapping(source = "description", target = "description")
+//    @Mapping(source = "note", target = "note")
+//    MedicationInfo toMedicationInfo(Medication medication);
+
+
+
 }

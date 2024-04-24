@@ -11,8 +11,6 @@ import ee.valiit.ravimivalvurback.domain.medication.medicationimage.MedicationIm
 import ee.valiit.ravimivalvurback.domain.medication.unit.Unit;
 import ee.valiit.ravimivalvurback.domain.medication.unit.UnitRepository;
 import ee.valiit.ravimivalvurback.infrastructure.validation.ValidationService;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -49,4 +47,15 @@ public class MedicationService {
         List<Medication> medications = medicationRepository.findMedicationsBy("A");
         return medicationMapper.toMedicationsInfos(medications);
     }
+
+//    public MedicationInfo getExtendedMedicationInfo(Integer medicationId) {
+//        Medication medication = medicationRepository.getReferenceById(medicationId);
+//        MedicationInfo medicationInfo = new MedicationInfo();
+//        medicationInfo.setMedicationName(medication.getName());
+//        medicationInfo.setNote(medication.getNote());
+//        medicationInfo.setDescription(medication.getDescription());
+//
+//        MedicationInfo medicationInfo1 = medicationMapper.toMedicationInfo(medication);
+//        return medicationInfo;
+//    }
 }

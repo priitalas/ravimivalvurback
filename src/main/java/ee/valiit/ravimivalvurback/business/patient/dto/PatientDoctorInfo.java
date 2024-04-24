@@ -13,7 +13,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PatientDoctorInfo implements Serializable {
-    private Integer doctorId;
-    private String firstName;
-    private String lastName;
+    private Integer doctorPatientId;
+    private String doctorFirstName;
+    private String doctorLastName;
 }

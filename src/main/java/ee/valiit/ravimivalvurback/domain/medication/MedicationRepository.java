@@ -18,5 +18,8 @@ public interface MedicationRepository extends JpaRepository<Medication, Integer>
     @Query("select m from Medication m where m.status = :status")
     List<Medication> findMedicationsBy(String status);
 
+//    @Query("select m from Medication m where m.name = :medicationName")
+//    Medication findExtendedMedicationInfoBy(Integer medicationId);
+
 
 }
