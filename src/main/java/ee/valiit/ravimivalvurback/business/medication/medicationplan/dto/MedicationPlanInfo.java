@@ -22,7 +22,7 @@ public class MedicationPlanInfo implements Serializable {
     private String medicationName;
     private String medicationUnitName;
     @NotNull
-    private Integer frequency;
+    private long frequency;
     @NotNull
     private LocalDate periodStart;
     @NotNull
