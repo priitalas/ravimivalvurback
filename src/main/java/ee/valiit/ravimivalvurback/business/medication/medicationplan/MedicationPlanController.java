@@ -35,10 +35,10 @@ public class MedicationPlanController {
         return medicationPlans;
     }
 
-    @PostMapping("/medication-plans/patient/")
-    @Operation(summary = "Lisab patsiendile uue ravikuuri")
-    public Integer addNewMedicationPlan(@RequestBody NewMedicationPlanInfo newMedicationPlanInfo) {
-        return medicationPlanService.addNewMedicationPlan(newMedicationPlanInfo);
-    }
+//    @PostMapping("/medication-plans/patient/")
+//    @Operation(summary = "Lisab patsiendile uue ravikuuri")
+//    public Integer addNewMedicationPlan(@RequestBody NewMedicationPlanInfo newMedicationPlanInfo) {
+//        return medicationPlanService.addNewMedicationPlan(newMedicationPlanInfo);
+//    }
 
 }

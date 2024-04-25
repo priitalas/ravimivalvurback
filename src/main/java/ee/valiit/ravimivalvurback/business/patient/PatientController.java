@@ -34,8 +34,8 @@ public class PatientController {
     }
     @PutMapping("/patient/doctor")
     @Operation(summary = "Patsient aksepteerib doctorPatientId abil arsti")
-    public void patientAcceptsDoctorRelationshipRequest(@RequestParam Integer doctorPatientId) {
-        patientService.patientAcceptsDoctorRelationshipRequest(doctorPatientId);
+    public void patientDoctorRelationshipResponse(@RequestParam Integer doctorPatientId, @RequestParam Boolean hasAccepted) {
+        patientService.patientDoctorRelationshipResponse(doctorPatientId, hasAccepted);
     }
 
 
