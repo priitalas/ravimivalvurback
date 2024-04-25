@@ -4,7 +4,10 @@ import ee.valiit.ravimivalvurback.business.medication.dto.MedicationInfo;
 import ee.valiit.ravimivalvurback.business.medication.dto.MedicationInfoExtended;
 import ee.valiit.ravimivalvurback.business.medication.dto.MedicationsInfo;
 import ee.valiit.ravimivalvurback.domain.Status;
-import org.mapstruct.*;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingConstants;
+import org.mapstruct.ReportingPolicy;
 
 import java.util.List;
 
@@ -23,16 +26,8 @@ public interface MedicationMapper {
 
     List<MedicationsInfo> toMedicationsInfos(List<Medication> medications);
 
-
+    @Mapping(source = "name", target = "medicationName")
+    @Mapping(source = "note", target = "medicationNote")
+    @Mapping(source = "description", target = "medicationDescription")
     MedicationInfoExtended toMedicationInfoExtended(Medication medication);
-
-
-
-//    @Mapping(source = "name", target = "medicationName")
-//    @Mapping(source = "description", target = "description")
-//    @Mapping(source = "note", target = "note")
-//    MedicationInfo toMedicationInfo(Medication medication);
-
-
-
 }
