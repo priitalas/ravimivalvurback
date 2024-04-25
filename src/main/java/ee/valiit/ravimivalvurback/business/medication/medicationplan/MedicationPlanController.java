@@ -43,4 +43,11 @@ public class MedicationPlanController {
 //        return medicationPlanService.addNewMedicationPlan(newMedicationPlanInfo);
 //    }
 
+    @GetMapping("/medication-plans/patient/time-slot")
+    @Operation(summary = "Toob ära ravikuuri päevase võtmise ajad ja doosid")
+    public List<MedicationTimesInfo> findMedicationPlanTimeslots(@RequestParam Integer medicationPlanId) {
+        return medicationPlanService.findMedicationPlanTimeslots(medicationPlanId);
+    }
+
+
 }

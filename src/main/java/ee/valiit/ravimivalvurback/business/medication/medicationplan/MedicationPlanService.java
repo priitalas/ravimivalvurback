@@ -27,6 +27,7 @@ public class MedicationPlanService {
     private final MedicationPlanRepository medicationPlanRepository;
     private final MedicationPlanMapper medicationPlanMapper;
     private final MedicationTimeRepository medicationTimeRepository;
+    private final MedicationTimeMapper medicationTimeMapper;
     private final MedicationRepository medicationRepository;
     private final MedicationImageRepository medicationImageRepository;
     private final LogbookRepository logbookRepository;
@@ -87,7 +88,8 @@ public class MedicationPlanService {
         ValidationService.validatePatientHaveMedicationPlan(medicationPlans);
 
         for (MedicationPlanInfo medicationPlanInfo : medicationPlanInfos) {
-            // MedicationTime medicationTime = medicationTimeRepository.getReferenceById(medicationPlanInfo.getMedicationPlanId());
+            long medicationTime = medicationTimeRepository.countTimeslotsBy(medicationPlanInfo.getMedicationPlanId());
+            medicationPlanInfo.setFrequency(medicationTime);
             Medication medication = medicationRepository.findMedicationBy(medicationPlanInfo.getMedicationName());
             medicationPlanInfo.setMedicationUnitName(medication.getUnit().getName());
         }
@@ -122,6 +124,15 @@ public class MedicationPlanService {
     }
 
     public void addMedicationPlanTimeSlot(AddMedicationTimeRequest addMedicationTimeRequest) {
+        MedicationPlan medicationPlan = medicationPlanRepository.getReferenceById(addMedicationTimeRequest.getMedicationPlanId());
+        MedicationTime medicationTime = medicationTimeMapper.toMedicationTime(addMedicationTimeRequest);
+        medicationTime.setMedicationPlan(medicationPlan);
+        medicationTimeRepository.save(medicationTime);
+    }
+
+    public List<MedicationTimesInfo> findMedicationPlanTimeslots(Integer medicationPlanId) {
+        List<MedicationTime> medicationTimes = medicationTimeRepository.findTimeSlotsBy(medicationPlanId);
+        return medicationTimeMapper.toMedicationTimesInfos(medicationTimes);
 
     }
 }
