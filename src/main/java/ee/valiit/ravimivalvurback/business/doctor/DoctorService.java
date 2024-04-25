@@ -4,6 +4,7 @@ package ee.valiit.ravimivalvurback.business.doctor;
 import ee.valiit.ravimivalvurback.business.doctor.dto.DoctorPatientInfo;
 import ee.valiit.ravimivalvurback.business.patient.dto.PatientNotInDoctorListInfo;
 import ee.valiit.ravimivalvurback.domain.user.User;
+import ee.valiit.ravimivalvurback.domain.user.UserRepository;
 import ee.valiit.ravimivalvurback.domain.user.contact.Contact;
 import ee.valiit.ravimivalvurback.domain.user.contact.ContactMapper;
 import ee.valiit.ravimivalvurback.domain.user.contact.ContactRepository;
@@ -24,6 +25,7 @@ public class DoctorService {
     private DoctorPatientMapper doctorPatientMapper;
     private ContactRepository contactRepository;
     private ContactMapper contactMapper;
+    private final UserRepository userRepository;
 
 
     public List<DoctorPatientInfo> findPatientsInDoctorsList(Integer doctorId) {
@@ -61,11 +63,12 @@ public class DoctorService {
         User doctor = new User();
         doctor.setId(doctorId);
         doctorPatient.setDoctor(doctor);
-        User patient = new User();
-        patient.setId(patientId);
+        User patient = userRepository.getReferenceById(patientId);
+        patient.setStatus("P");
         doctorPatient.setPatient(patient);
         doctorPatient.setStatus("P");
         doctorPatientRepository.save(doctorPatient);
+        userRepository.save(patient);
     }
 
     public void deletePatientFromDoctorList(Integer patientId, Integer doctorId) {

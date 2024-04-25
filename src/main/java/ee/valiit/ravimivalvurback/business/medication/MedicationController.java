@@ -19,21 +19,13 @@ public class MedicationController {
     @PostMapping("/medication")
     @Operation(summary = "Lisab andmebaasi uue ravimi")
     public Integer addNewMedication(@RequestBody @Valid MedicationInfo medicationInfo) {
-        medicationService.addNewMedication(medicationInfo);
         return medicationService.addNewMedication(medicationInfo);
     }
 
     @GetMapping("/medications")
     @Operation(summary = "Leiab andmebaasist kõik ravimid, mille staatus on A (aktiivne)")
     public List<MedicationsInfo> getAllActiveMedications() {
-        medicationService.getAllActiveMedications();
         return medicationService.getAllActiveMedications();
     }
 
-//    @GetMapping("/medication/{medicationId}")
-//    @Operation(summary = "Leiab andmebaasist medicationId järgi konkreetse ravimi laiendatud info koos pildiga")
-//    public MedicationInfo getExtendedMedicationInfo(@PathVariable Integer medicationId) {
-//        MedicationInfo extendedMedicationInfo = medicationService.getExtendedMedicationInfo(medicationId);
-//        return extendedMedicationInfo;
-//    }
 }

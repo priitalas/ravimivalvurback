@@ -1,6 +1,7 @@
 package ee.valiit.ravimivalvurback.infrastructure.validation;
 
 import ee.valiit.ravimivalvurback.business.patient.dto.PatientNotInDoctorListInfo;
+import ee.valiit.ravimivalvurback.domain.medicationplan.Logbook;
 import ee.valiit.ravimivalvurback.domain.medicationplan.MedicationPlan;
 import ee.valiit.ravimivalvurback.domain.user.User;
 import ee.valiit.ravimivalvurback.domain.user.doctor.DoctorPatient;
@@ -24,33 +25,40 @@ public class ValidationService {
             throw new ForbiddenException(USER_UNAVAILABLE.getMessage(), USER_UNAVAILABLE.getErrorCode());
         }
     }
+
     public static void validateMedicineNameAvailable(boolean medicineAlreadyExists) {
         if (medicineAlreadyExists) {
             throw new ForbiddenException(MEDICINE_UNAVAILABLE.getMessage(), MEDICINE_UNAVAILABLE.getErrorCode());
         }
     }
 
-    public static void validateUnitNameAvailable(boolean unitExists){
-        if(unitExists){
-            throw new ForbiddenException(UNIT_UNAVAILABLE.getMessage(),UNIT_UNAVAILABLE.getErrorCode());
+    public static void validateUnitNameAvailable(boolean unitExists) {
+        if (unitExists) {
+            throw new ForbiddenException(UNIT_UNAVAILABLE.getMessage(), UNIT_UNAVAILABLE.getErrorCode());
         }
     }
 
-    public static void validateDoctorHasPatients(List<DoctorPatient> doctorPatients){
-        if(doctorPatients.isEmpty()){
+    public static void validateDoctorHasPatients(List<DoctorPatient> doctorPatients) {
+        if (doctorPatients.isEmpty()) {
             throw new ForbiddenException(NO_PATIENTS_FOUND.getMessage(), NO_PATIENTS_FOUND.getErrorCode());
         }
     }
 
-    public static void validatePatientHaveMedicationPlan(List<MedicationPlan> medicationPlans){
-        if(medicationPlans.isEmpty()){
+    public static void validatePatientHaveMedicationPlan(List<MedicationPlan> medicationPlans) {
+        if (medicationPlans.isEmpty()) {
             throw new ForbiddenException(NO_MEDICATIONPLAN_FOUND.getMessage(), NO_MEDICATIONPLAN_FOUND.getErrorCode());
         }
     }
 
     public static void validateDoctorHasNewPatientsToAdd(List<PatientNotInDoctorListInfo> patientNotInDoctorListInfos) {
-        if(patientNotInDoctorListInfos.isEmpty()){
+        if (patientNotInDoctorListInfos.isEmpty()) {
             throw new ForbiddenException(NO_PATIENTS_FOUND_TO_ADD.getMessage(), NO_PATIENTS_FOUND_TO_ADD.getErrorCode());
+        }
+    }
+
+    public static void validatePatientHasTakenAnyMedications(List<Logbook> logbook) {
+        if (logbook.isEmpty()) {
+            throw new ForbiddenException(NO_LOGBOOK_FOUND.getMessage(), NO_LOGBOOK_FOUND.getErrorCode());
         }
     }
 }
