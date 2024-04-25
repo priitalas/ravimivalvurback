@@ -21,7 +21,7 @@ public class PatientService {
 
     public PatientDoctorInfo getPatientDoctorRelationshipRequest(Integer patientId) {
         DoctorPatient doctorPatient = doctorPatientRepository.findPatientBy(patientId, Status.PENDING);
-        PatientDoctorInfo patientDoctorInfo =  doctorPatientMapper.toPatientDoctorInfo(doctorPatient);
+        PatientDoctorInfo patientDoctorInfo = doctorPatientMapper.toPatientDoctorInfo(doctorPatient);
         Contact contact = contactRepository.getContactBy(doctorPatient.getDoctor().getId());
         patientDoctorInfo.setDoctorFirstName(contact.getFirstName());
         patientDoctorInfo.setDoctorLastName(contact.getLastName());

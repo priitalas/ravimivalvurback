@@ -28,14 +28,15 @@ public class DoctorController {
 
     @PostMapping("/doctor/patient")
     @Operation(summary = "Lisab patsiendi arsti nimekirja, märkides esialgu staatuseks 'pending'")
-    public void postNewPatientToDoctorList(@RequestParam Integer patientId, Integer doctorId){
+    public void postNewPatientToDoctorList(@RequestParam Integer patientId, Integer doctorId) {
         doctorService.postNewPatientToDoctorList(patientId, doctorId);
     }
 
     @DeleteMapping("/doctor/patient")
     @Operation(summary = "Kustutab patsiendi arsti nimekirjast. Doctor-patient tabelist kustutatakse vastav rida")
-    public void deletePatientFromDoctorList(@RequestParam Integer patientId, Integer doctorId){
+    public void deletePatientFromDoctorList(@RequestParam Integer patientId, Integer doctorId) {
         doctorService.deletePatientFromDoctorList(patientId, doctorId);
 
     }
+
 }

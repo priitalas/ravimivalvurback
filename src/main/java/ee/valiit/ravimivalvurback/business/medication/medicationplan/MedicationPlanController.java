@@ -1,9 +1,6 @@
 package ee.valiit.ravimivalvurback.business.medication.medicationplan;
 
-import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.AddedMedicationPlansInfo;
-import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.MedicationPlanInfo;
-import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.NewMedicationPlanInfo;
-import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.PatientMedicationPlan;
+import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.*;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -52,6 +49,12 @@ public class MedicationPlanController {
     public List<AddedMedicationPlansInfo> findPatientMedicationPlansWithoutTimeslots(@RequestParam Integer patientId) {
         List<AddedMedicationPlansInfo> addedMedicationPlans = medicationPlanService.findPatientMedicationPlansWithoutTimeslots(patientId);
         return addedMedicationPlans;
+    }
+
+    @PostMapping("/medication-plans/patient/time-slots")
+    @Operation(summary = "Lisab ravikuurile päevase võtmise korra")
+    public void addMedicationPlanTimeSlot(@RequestBody AddMedicationTimeRequest addMedicationTimeRequest) {
+        medicationPlanService.addMedicationPlanTimeSlot(addMedicationTimeRequest);
     }
 
 }
