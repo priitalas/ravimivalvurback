@@ -30,10 +30,4 @@ public class MedicationController {
         return medicationService.getAllActiveMedications();
     }
 
-//    @GetMapping("/medication/{medicationId}")
-//    @Operation(summary = "Leiab andmebaasist medicationId järgi konkreetse ravimi laiendatud info koos pildiga")
-//    public MedicationInfo getExtendedMedicationInfo(@PathVariable Integer medicationId) {
-//        MedicationInfo extendedMedicationInfo = medicationService.getExtendedMedicationInfo(medicationId);
-//        return extendedMedicationInfo;
-//    }
 }
