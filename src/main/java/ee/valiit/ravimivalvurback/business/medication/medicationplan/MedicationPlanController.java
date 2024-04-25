@@ -1,6 +1,7 @@
 package ee.valiit.ravimivalvurback.business.medication.medicationplan;
 
 import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.MedicationPlanInfo;
+import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.MedicationTimesInfo;
 import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.NewMedicationPlanInfo;
 import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.PatientMedicationPlan;
 import io.swagger.v3.oas.annotations.Operation;
