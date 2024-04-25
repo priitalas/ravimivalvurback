@@ -3,6 +3,7 @@ package ee.valiit.ravimivalvurback.domain.user.doctor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -27,6 +28,11 @@ public interface DoctorPatientRepository extends JpaRepository<DoctorPatient, In
 
     @Query("select d from DoctorPatient d where d.patient.id = :patientId and d.patient.status = :status")
     DoctorPatient findPatientBy(Integer patientId, String status);
+
+    @Transactional
+    @Modifying
+    @Query("update DoctorPatient d set d.status = :statusActive where d.status = :statusPending")
+    void statusUpdate(String statusActive, String statusPending);
 
 
 }
