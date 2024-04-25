@@ -1,7 +1,6 @@
 package ee.valiit.ravimivalvurback.business.logbook;
 
-import ee.valiit.ravimivalvurback.domain.medication.MedicationRepository;
-import ee.valiit.ravimivalvurback.domain.medication.medicationimage.MedicationImageRepository;
+import ee.valiit.ravimivalvurback.business.logbook.dto.LogbookInfo;
 import ee.valiit.ravimivalvurback.domain.medicationplan.*;
 import ee.valiit.ravimivalvurback.infrastructure.validation.ValidationService;
 import lombok.AllArgsConstructor;
@@ -31,7 +30,7 @@ public class LogbookService {
         logbookRepository.save(logbook);
     }
 
-    public List<Logbook> getPatientMedicationLogbook(Integer patientId) {
+    public List<LogbookInfo> getPatientMedicationLogbook(Integer patientId) {
         List<Logbook> logbook = logbookRepository.findLogbookBy(patientId);
         ValidationService.validatePatientHasTakenAnyMedications(logbook);
         return logbookMapper.toLogbookInfos(logbook);
