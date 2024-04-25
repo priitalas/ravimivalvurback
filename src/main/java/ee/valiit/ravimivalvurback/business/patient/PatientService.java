@@ -1,9 +1,7 @@
 package ee.valiit.ravimivalvurback.business.patient;
 
-import ee.valiit.ravimivalvurback.business.patient.dto.LogbookInfo;
 import ee.valiit.ravimivalvurback.business.patient.dto.PatientDoctorInfo;
 import ee.valiit.ravimivalvurback.domain.Status;
-import ee.valiit.ravimivalvurback.domain.medicationplan.Logbook;
 import ee.valiit.ravimivalvurback.domain.medicationplan.LogbookMapper;
 import ee.valiit.ravimivalvurback.domain.medicationplan.LogbookRepository;
 import ee.valiit.ravimivalvurback.domain.user.contact.Contact;
@@ -11,11 +9,8 @@ import ee.valiit.ravimivalvurback.domain.user.contact.ContactRepository;
 import ee.valiit.ravimivalvurback.domain.user.doctor.DoctorPatient;
 import ee.valiit.ravimivalvurback.domain.user.doctor.DoctorPatientMapper;
 import ee.valiit.ravimivalvurback.domain.user.doctor.DoctorPatientRepository;
-import ee.valiit.ravimivalvurback.infrastructure.validation.ValidationService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 @AllArgsConstructor

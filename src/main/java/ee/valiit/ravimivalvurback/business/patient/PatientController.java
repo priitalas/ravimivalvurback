@@ -32,9 +32,6 @@ public class PatientController {
         patientService.patientDoctorRelationshipResponse(doctorPatientId, hasAccepted);
     }
 
-
-
-
 }
 
 
