@@ -13,7 +13,6 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-
 public class MedicationPlanController {
     private MedicationPlanService medicationPlanService;
 
