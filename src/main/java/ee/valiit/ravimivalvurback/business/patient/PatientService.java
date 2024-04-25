@@ -52,9 +52,5 @@ public class PatientService {
 
     }
 
-    public List<Logbook> getPatientMedicationLogbook(Integer patientId) {
-       List<Logbook> logbook = logbookRepository.findLogbookBy(patientId);
-       ValidationService.validatePatientHasTakenAnyMedications(logbook);
-       return logbookMapper.toLogbookInfos(logbook);
-    }
+
 }

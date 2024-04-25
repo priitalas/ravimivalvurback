@@ -75,8 +75,6 @@ public class MedicationPlanService {
             }
         }
 
-        // @Mapping(source = "", target = "quantity")
-
         return patientMedicationPlans;
     }
 

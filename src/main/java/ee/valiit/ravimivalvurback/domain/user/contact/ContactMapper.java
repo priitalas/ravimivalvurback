@@ -3,6 +3,7 @@ package ee.valiit.ravimivalvurback.domain.user.contact;
 import ee.valiit.ravimivalvurback.business.doctor.dto.DoctorPatientInfo;
 import ee.valiit.ravimivalvurback.business.patient.dto.PatientDoctorInfo;
 import ee.valiit.ravimivalvurback.business.patient.dto.PatientNotInDoctorListInfo;
+import ee.valiit.ravimivalvurback.business.registration.dto.ContactInfo;
 import ee.valiit.ravimivalvurback.business.registration.dto.RegistrationRequest;
 import org.mapstruct.*;
 
@@ -32,10 +33,15 @@ public interface ContactMapper {
     @Mapping(source = "lastName", target = "doctorLastName")
     PatientDoctorInfo toPatientDoctorInfo(Contact contact);
 
+    @Mapping(source = "firstName", target = "firstName")
+    @Mapping(source = "lastName", target = "lastName")
+    @Mapping(source = "email", target = "email")
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void updateContact(ContactInfo contactInfo, @MappingTarget Contact contact);
 
-
-
-
-
+    @Mapping(source = "firstName", target = "firstName")
+    @Mapping(source = "lastName", target = "lastName")
+    @Mapping(source = "email", target = "email")
+    ContactInfo toContactInfo(Contact contact);
 }
 
