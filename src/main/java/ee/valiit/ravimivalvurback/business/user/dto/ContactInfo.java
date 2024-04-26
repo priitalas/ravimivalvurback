@@ -1,4 +1,4 @@
-package ee.valiit.ravimivalvurback.business.registration.dto;
+package ee.valiit.ravimivalvurback.business.user.dto;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;

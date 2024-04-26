@@ -1,6 +1,6 @@
 package ee.valiit.ravimivalvurback.business.user;
 
-import ee.valiit.ravimivalvurback.business.registration.dto.ContactInfo;
+import ee.valiit.ravimivalvurback.business.user.dto.ContactInfo;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
