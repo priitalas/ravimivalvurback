@@ -3,6 +3,7 @@ package ee.valiit.ravimivalvurback.business.medication.medicationplan;
 import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.*;
 import ee.valiit.ravimivalvurback.domain.medication.Medication;
 import ee.valiit.ravimivalvurback.domain.medication.MedicationRepository;
+import ee.valiit.ravimivalvurback.domain.medication.medicationimage.MedicationImage;
 import ee.valiit.ravimivalvurback.domain.medication.medicationimage.MedicationImageRepository;
 import ee.valiit.ravimivalvurback.domain.medicationplan.*;
 import ee.valiit.ravimivalvurback.domain.user.User;
@@ -57,7 +58,8 @@ public class MedicationPlanService {
 
         for (PatientMedicationPlan patientMedicationPlan : patientMedicationPlans) {
 
-            byte[] imageData = medicationImageRepository.getMedicationImageBy(patientMedicationPlan.getMedicationId()).getData();
+            MedicationImage medicationImage = medicationImageRepository.getMedicationImageBy(patientMedicationPlan.getMedicationId());
+            byte[] imageData = medicationImage.getData();
             patientMedicationPlan.setMedicationImageData(StringConverter.bytesToString(imageData));
             LocalTime timeNow = LocalTime.now();
             Optional<MedicationTime> optionalMedicationTime = medicationTimeRepository.findOptionalMedicationTime(patientMedicationPlan.getMedicationPlanId(), timeNow, timeNow);
@@ -77,7 +79,6 @@ public class MedicationPlanService {
 
         return patientMedicationPlans;
     }
-
 
 
     public List<MedicationPlanInfo> findPatientMedicationPlans(Integer patientId) {
@@ -131,6 +132,5 @@ public class MedicationPlanService {
     public List<MedicationTimesInfo> findMedicationPlanTimeslots(Integer medicationPlanId) {
         List<MedicationTime> medicationTimes = medicationTimeRepository.findTimeSlotsBy(medicationPlanId);
         return medicationTimeMapper.toMedicationTimesInfos(medicationTimes);
-
     }
 }

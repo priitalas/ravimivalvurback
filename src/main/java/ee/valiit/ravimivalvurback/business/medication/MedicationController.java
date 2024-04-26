@@ -17,8 +17,6 @@ public class MedicationController {
 
     private MedicationService medicationService;
 
-
-
     @PostMapping("/medication")
     @Operation(summary = "Lisab andmebaasi uue ravimi")
     public Integer addNewMedication(@RequestBody @Valid MedicationInfo medicationInfo) {
@@ -34,10 +32,8 @@ public class MedicationController {
     @GetMapping("/medication/{medicationId}")
     @Operation(summary = "Toob andmebaasidest ravimi ID järgi ravimi laiendatud info koos pildiga")
     public MedicationInfoExtended getMedicationExtendedInfo(@PathVariable Integer medicationId) {
-       MedicationInfoExtended medicationInfoExtended = medicationService.getMedicationExtendedInfo(medicationId);
+        MedicationInfoExtended medicationInfoExtended = medicationService.getMedicationExtendedInfo(medicationId);
         return medicationInfoExtended;
-
     }
-
 }
 

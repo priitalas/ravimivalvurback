@@ -18,4 +18,5 @@ public class MedicationInfoExtended implements Serializable {
     private String medicationName;
     private String medicationNote;
     private String medicationDescription;
+    private String medicationImageData;
 }
