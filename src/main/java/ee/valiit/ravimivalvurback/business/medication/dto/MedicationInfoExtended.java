@@ -15,12 +15,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MedicationInfoExtended implements Serializable {
-    @NotNull
-    @Size(max = 255)
-    private String name;
-    @Size(max = 255)
-    private String note;
-    @NotNull
-    @Size(max = 1000)
-    private String description;
+    private String medicationName;
+    private String medicationNote;
+    private String medicationDescription;
 }

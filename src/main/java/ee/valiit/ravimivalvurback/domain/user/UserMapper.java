@@ -1,7 +1,6 @@
 package ee.valiit.ravimivalvurback.domain.user;
 
 import ee.valiit.ravimivalvurback.business.login.dto.LoginResponse;
-import ee.valiit.ravimivalvurback.business.registration.dto.ContactChangeRequest;
 import ee.valiit.ravimivalvurback.business.registration.dto.RegistrationRequest;
 import ee.valiit.ravimivalvurback.domain.Status;
 import org.mapstruct.*;
@@ -17,9 +16,5 @@ public interface UserMapper {
     @Mapping(constant = Status.ACTIVE, target = "status")
     User toUser (RegistrationRequest registrationRequest);
 
-    @Mapping(source = "username", target = "username")
-    @Mapping(source = "password", target = "password")
-    @Mapping(source = "roleId", target = "role.id")
-    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    User updateUser(ContactChangeRequest contactChangeRequest, @MappingTarget User user);
+
 }

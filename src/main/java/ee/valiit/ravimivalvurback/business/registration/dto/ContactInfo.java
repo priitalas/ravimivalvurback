@@ -14,11 +14,8 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ContactChangeRequest implements Serializable {
+public class ContactInfo implements Serializable {
     private Integer userId;
-    private String username;
-    private String password;
-    private Integer roleId;
     @NotNull
     @Size(max = 255)
     private String firstName;
