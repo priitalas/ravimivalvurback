@@ -62,5 +62,10 @@ public class MedicationPlanController {
         return medicationPlanService.findMedicationPlanTimeslots(medicationPlanId);
     }
 
+    @DeleteMapping("/medication-plan")
+    public void deactivateMedicationPlan(@RequestParam Integer medicationPlanId) {
+        medicationPlanService.deactivateMedicationPlan(medicationPlanId);
+    }
+
 
 }

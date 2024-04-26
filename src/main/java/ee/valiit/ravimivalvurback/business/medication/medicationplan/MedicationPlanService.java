@@ -1,6 +1,7 @@
 package ee.valiit.ravimivalvurback.business.medication.medicationplan;
 
 import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.*;
+import ee.valiit.ravimivalvurback.domain.Status;
 import ee.valiit.ravimivalvurback.domain.medication.Medication;
 import ee.valiit.ravimivalvurback.domain.medication.MedicationRepository;
 import ee.valiit.ravimivalvurback.domain.medication.medicationimage.MedicationImage;
@@ -132,5 +133,12 @@ public class MedicationPlanService {
     public List<MedicationTimesInfo> findMedicationPlanTimeslots(Integer medicationPlanId) {
         List<MedicationTime> medicationTimes = medicationTimeRepository.findTimeSlotsBy(medicationPlanId);
         return medicationTimeMapper.toMedicationTimesInfos(medicationTimes);
+    }
+
+    public void deactivateMedicationPlan(Integer medicationPlanId) {
+        MedicationPlan medicationPlan = medicationPlanRepository.getReferenceById(medicationPlanId);
+        medicationPlan.setStatus(Status.DEACTIVATED);
+        medicationPlanRepository.save(medicationPlan);
+
     }
 }
