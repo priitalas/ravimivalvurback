@@ -1,6 +1,6 @@
 package ee.valiit.ravimivalvurback.business.user;
 
-import ee.valiit.ravimivalvurback.business.registration.dto.ContactInfo;
+import ee.valiit.ravimivalvurback.business.user.dto.ContactInfo;
 import ee.valiit.ravimivalvurback.domain.user.contact.Contact;
 import ee.valiit.ravimivalvurback.domain.user.contact.ContactMapper;
 import ee.valiit.ravimivalvurback.domain.user.contact.ContactRepository;
@@ -19,7 +19,6 @@ public class UserService {
         contactMapper.updateContact(contactInfo, contact);
         contactRepository.save(contact);
     }
-
     public ContactInfo getContactInfo(Integer userId) {
         Contact contact = contactRepository.findContactBy(userId);
         return contactMapper.toContactInfo(contact);

@@ -2,6 +2,7 @@ package ee.valiit.ravimivalvurback.domain.user.doctor;
 
 import ee.valiit.ravimivalvurback.business.doctor.dto.DoctorPatientInfo;
 import ee.valiit.ravimivalvurback.business.patient.dto.PatientDoctorInfo;
+import ee.valiit.ravimivalvurback.domain.Status;
 import org.mapstruct.*;
 
 import java.util.List;
@@ -19,8 +20,6 @@ public interface DoctorPatientMapper {
     PatientDoctorInfo toPatientDoctorInfo(DoctorPatient doctorPatient);
 
 
-
-
-
-
+    @Mapping(source = "status", target = "status")
+    DoctorPatient updateStatus (DoctorPatient doctorPatient);
 }
