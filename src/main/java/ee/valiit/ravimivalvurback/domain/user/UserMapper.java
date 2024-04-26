@@ -16,5 +16,7 @@ public interface UserMapper {
     @Mapping(constant = Status.ACTIVE, target = "status")
     User toUser (RegistrationRequest registrationRequest);
 
+    @Mapping(source = "status", target = "status")
+    User updateDoctorPatientRelation (User user);
 
 }

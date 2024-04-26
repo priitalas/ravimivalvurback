@@ -29,10 +29,5 @@ public interface DoctorPatientRepository extends JpaRepository<DoctorPatient, In
     @Query("select d from DoctorPatient d where d.patient.id = :patientId and d.patient.status = :status")
     DoctorPatient findPatientBy(Integer patientId, String status);
 
-    @Transactional
-    @Modifying
-    @Query("update DoctorPatient d set d.status = :statusActive where d.status = :statusPending")
-    void statusUpdate(String statusActive, String statusPending);
-
 
 }
