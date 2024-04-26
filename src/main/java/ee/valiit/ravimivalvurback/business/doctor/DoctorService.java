@@ -63,12 +63,11 @@ public class DoctorService {
         User doctor = new User();
         doctor.setId(doctorId);
         doctorPatient.setDoctor(doctor);
-        User patient = userRepository.getReferenceById(patientId);
-        patient.setStatus("P");
+        User patient = new User();
+        patient.setId(patientId);
         doctorPatient.setPatient(patient);
         doctorPatient.setStatus("P");
         doctorPatientRepository.save(doctorPatient);
-        userRepository.save(patient);
     }
 
     public void deletePatientFromDoctorList(Integer patientId, Integer doctorId) {

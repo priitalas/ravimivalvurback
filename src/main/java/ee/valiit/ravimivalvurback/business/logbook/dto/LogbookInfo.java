@@ -1,4 +1,4 @@
-package ee.valiit.ravimivalvurback.business.patient.dto;
+package ee.valiit.ravimivalvurback.business.logbook.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
