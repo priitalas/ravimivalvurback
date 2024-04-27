@@ -63,6 +63,7 @@ public class MedicationPlanController {
     }
 
     @DeleteMapping("/medication-plan")
+    @Operation(summary = "kustutab patsiendi ravikuuri (muudab staatuse mitteaktiivseks")
     public void deactivateMedicationPlan(@RequestParam Integer medicationPlanId) {
         medicationPlanService.deactivateMedicationPlan(medicationPlanId);
     }

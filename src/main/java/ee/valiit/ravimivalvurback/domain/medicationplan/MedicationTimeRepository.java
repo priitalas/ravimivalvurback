@@ -20,6 +20,6 @@ public interface MedicationTimeRepository extends JpaRepository<MedicationTime, 
     List<MedicationTime> findTimeSlotsBy(Integer medicationPlanId);
 
     @Query("select count(m) from MedicationTime m where m.medicationPlan.id = :medicationPlanId")
-    long countTimeslotsBy(Integer medicationPlanId);
-    
+    Integer countTimeslotsBy(Integer medicationPlanId);
+
 }

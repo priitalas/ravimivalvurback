@@ -84,12 +84,14 @@ public class MedicationPlanService {
 
     public List<MedicationPlanInfo> findPatientMedicationPlans(Integer patientId) {
         List<MedicationPlan> medicationPlans = medicationPlanRepository.findMedicationPlansBy(patientId);
-        List<MedicationPlanInfo> medicationPlanInfos = medicationPlanMapper.toMedicationPlanInfos(medicationPlans);
         ValidationService.validatePatientHaveMedicationPlan(medicationPlans);
-
+        for (MedicationPlan medicationPlan : medicationPlans) {
+            Integer medicationTimes = medicationTimeRepository.countTimeslotsBy(medicationPlan.getId());
+            medicationPlan.setFrequency(medicationTimes);
+            medicationPlanRepository.save(medicationPlan);
+        }
+        List<MedicationPlanInfo> medicationPlanInfos = medicationPlanMapper.toMedicationPlanInfos(medicationPlans);
         for (MedicationPlanInfo medicationPlanInfo : medicationPlanInfos) {
-            long medicationTimes = medicationTimeRepository.countTimeslotsBy(medicationPlanInfo.getMedicationPlanId());
-            medicationPlanInfo.setFrequency(medicationTimes);
             List<MedicationTime> timeslots = medicationTimeRepository.findTimeSlotsBy(medicationPlanInfo.getMedicationPlanId());
             BigDecimal totalQuantity = BigDecimal.ZERO;
             for (MedicationTime timeslot : timeslots) {
