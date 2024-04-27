@@ -88,8 +88,14 @@ public class MedicationPlanService {
         ValidationService.validatePatientHaveMedicationPlan(medicationPlans);
 
         for (MedicationPlanInfo medicationPlanInfo : medicationPlanInfos) {
-            long medicationTime = medicationTimeRepository.countTimeslotsBy(medicationPlanInfo.getMedicationPlanId());
-            medicationPlanInfo.setFrequency(medicationTime);
+            long medicationTimes = medicationTimeRepository.countTimeslotsBy(medicationPlanInfo.getMedicationPlanId());
+            medicationPlanInfo.setFrequency(medicationTimes);
+            List<MedicationTime> timeslots = medicationTimeRepository.findTimeSlotsBy(medicationPlanInfo.getMedicationPlanId());
+            BigDecimal totalQuantity = BigDecimal.ZERO;
+            for (MedicationTime timeslot : timeslots) {
+                totalQuantity = totalQuantity.add(timeslot.getQuantity());
+            }
+            medicationPlanInfo.setQuantity(totalQuantity);
             Medication medication = medicationRepository.findMedicationBy(medicationPlanInfo.getMedicationName());
             medicationPlanInfo.setMedicationUnitName(medication.getUnit().getName());
         }
