@@ -1,5 +1,6 @@
 package ee.valiit.ravimivalvurback.infrastructure.validation;
 
+import ee.valiit.ravimivalvurback.business.medication.medicationplan.dto.PatientMedicationPlan;
 import ee.valiit.ravimivalvurback.business.patient.dto.PatientNotInDoctorListInfo;
 import ee.valiit.ravimivalvurback.domain.medicationplan.Logbook;
 import ee.valiit.ravimivalvurback.domain.medicationplan.MedicationPlan;
@@ -47,6 +48,12 @@ public class ValidationService {
     public static void validatePatientHaveMedicationPlan(List<MedicationPlan> medicationPlans) {
         if (medicationPlans.isEmpty()) {
             throw new ForbiddenException(NO_MEDICATIONPLAN_FOUND.getMessage(), NO_MEDICATIONPLAN_FOUND.getErrorCode());
+        }
+    }
+
+    public static void validatePatientHaveMedicationsToTakeNow(List<PatientMedicationPlan> patientMedicationPlans) {
+        if (patientMedicationPlans.isEmpty()) {
+            throw new ForbiddenException(NO_MEDICATIONS_TO_TAKE_NOW_FOUND.getMessage(), NO_MEDICATIONS_TO_TAKE_NOW_FOUND.getErrorCode());
         }
     }
 

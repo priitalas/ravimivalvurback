@@ -11,6 +11,7 @@ public enum Error {
     UNIT_UNAVAILABLE("Selline ühik on juba olemas", 555),
     NO_PATIENTS_FOUND("Teil ei ole nimekirjas veel ühtegi patsienti", 666),
     NO_MEDICATIONPLAN_FOUND("Ühtegi ravimit ei ole määratud", 777),
+    NO_MEDICATIONS_TO_TAKE_NOW_FOUND ("Hetkel teil võtmist vajavaid ravimeid ei ole!", 778),
     NO_PATIENTS_FOUND_TO_ADD ("Teil ei ole patsiente, keda lisada", 888),
     NO_LOGBOOK_FOUND ("Patsient ei ole veel ühtegi ravimit võtnud", 999);
 

@@ -62,6 +62,12 @@ public class MedicationPlanController {
         return medicationPlanService.findMedicationPlanTimeslots(medicationPlanId);
     }
 
+    @PutMapping("/medication-plan")
+    @Operation(summary = "Muudab ravikuuri (uued algus- ja lõpuajad ja staatus aktiivseks)")
+    public void editMedicationPlan(@RequestBody EditMedicationPlanRequest editMedicationPlanRequest) {
+        medicationPlanService.editMedicationPlan(editMedicationPlanRequest);
+    }
+
     @DeleteMapping("/medication-plan")
     @Operation(summary = "kustutab patsiendi ravikuuri (muudab staatuse mitteaktiivseks")
     public void deactivateMedicationPlan(@RequestParam Integer medicationPlanId) {

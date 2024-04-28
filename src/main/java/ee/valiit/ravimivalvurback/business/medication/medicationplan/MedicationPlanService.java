@@ -40,6 +40,7 @@ public class MedicationPlanService {
         List<MedicationPlan> medicationPlans = medicationPlanRepository.findMedicationPlansBy(patientId);
         List<PatientMedicationPlan> patientMedicationPlans = createPatientMedicationPlans(medicationPlans);
         patientMedicationPlans = getOnlyMedicationsToTake(patientMedicationPlans);
+        ValidationService.validatePatientHaveMedicationsToTakeNow(patientMedicationPlans);
         return patientMedicationPlans;
     }
 
@@ -147,6 +148,13 @@ public class MedicationPlanService {
         MedicationPlan medicationPlan = medicationPlanRepository.getReferenceById(medicationPlanId);
         medicationPlan.setStatus(Status.DEACTIVATED);
         medicationPlanRepository.save(medicationPlan);
+    }
 
+    public void editMedicationPlan(EditMedicationPlanRequest editMedicationPlanRequest) {
+       MedicationPlan medicationPlan = medicationPlanRepository.getReferenceById(editMedicationPlanRequest.getMedicationPlanId());
+       medicationPlan.setPeriodStart(editMedicationPlanRequest.getPeriodStart());
+       medicationPlan.setPeriodEnd(editMedicationPlanRequest.getPeriodEnd());
+       medicationPlan.setStatus(Status.ACTIVE);
+       medicationPlanRepository.save(medicationPlan);
     }
 }
