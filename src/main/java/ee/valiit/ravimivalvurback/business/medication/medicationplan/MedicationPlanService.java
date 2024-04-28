@@ -157,4 +157,8 @@ public class MedicationPlanService {
        medicationPlan.setStatus(Status.ACTIVE);
        medicationPlanRepository.save(medicationPlan);
     }
+
+    public void deleteMedicationPlanTimeslot(Integer timeslotId) {
+        medicationTimeRepository.deleteFromTableBy(timeslotId);
+    }
 }

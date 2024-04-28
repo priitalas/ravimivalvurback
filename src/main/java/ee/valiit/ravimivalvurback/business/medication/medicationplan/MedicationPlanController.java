@@ -49,17 +49,20 @@ public class MedicationPlanController {
         List<AddedMedicationPlansInfo> addedMedicationPlans = medicationPlanService.findPatientMedicationPlansWithoutTimeslots(patientId);
         return addedMedicationPlans;
     }
-
+    @GetMapping("/medication-plans/patient/time-slot")
+    @Operation(summary = "Toob ära ravikuuri päevase võtmise ajad ja doosid")
+    public List<MedicationTimesInfo> findMedicationPlanTimeslots(@RequestParam Integer medicationPlanId) {
+        return medicationPlanService.findMedicationPlanTimeslots(medicationPlanId);
+    }
     @PostMapping("/medication-plans/patient/time-slots")
     @Operation(summary = "Lisab ravikuurile päevase võtmise korra")
     public void addMedicationPlanTimeSlot(@RequestBody AddMedicationTimeRequest addMedicationTimeRequest) {
         medicationPlanService.addMedicationPlanTimeSlot(addMedicationTimeRequest);
     }
 
-    @GetMapping("/medication-plans/patient/time-slot")
-    @Operation(summary = "Toob ära ravikuuri päevase võtmise ajad ja doosid")
-    public List<MedicationTimesInfo> findMedicationPlanTimeslots(@RequestParam Integer medicationPlanId) {
-        return medicationPlanService.findMedicationPlanTimeslots(medicationPlanId);
+    @DeleteMapping("/medication-plans/patient/time-slot")
+    public void deleteMedicationPlanTimeslot(@RequestParam Integer timeslotId) {
+        medicationPlanService.deleteMedicationPlanTimeslot(timeslotId);
     }
 
     @PutMapping("/medication-plan")
