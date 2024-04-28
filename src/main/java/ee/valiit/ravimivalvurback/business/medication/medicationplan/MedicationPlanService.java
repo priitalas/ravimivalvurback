@@ -43,7 +43,7 @@ public class MedicationPlanService {
         return patientMedicationPlans;
     }
 
-    private List<PatientMedicationPlan> getOnlyMedicationsToTake(List<PatientMedicationPlan> patientMedicationPlans) {
+    public List<PatientMedicationPlan> getOnlyMedicationsToTake(List<PatientMedicationPlan> patientMedicationPlans) {
         List<PatientMedicationPlan> onlyMedicationsToTake = new ArrayList<>();
         for (PatientMedicationPlan patientMedicationPlan : patientMedicationPlans) {
             if (patientMedicationPlan.getItsTimeToTakeMedication()) {

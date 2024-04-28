@@ -3,6 +3,7 @@ package ee.valiit.ravimivalvurback.business.medication;
 import ee.valiit.ravimivalvurback.business.medication.dto.MedicationInfo;
 import ee.valiit.ravimivalvurback.business.medication.dto.MedicationInfoExtended;
 import ee.valiit.ravimivalvurback.business.medication.dto.MedicationsInfo;
+import ee.valiit.ravimivalvurback.domain.Status;
 import ee.valiit.ravimivalvurback.domain.medication.Medication;
 import ee.valiit.ravimivalvurback.domain.medication.MedicationMapper;
 import ee.valiit.ravimivalvurback.domain.medication.MedicationRepository;
@@ -47,7 +48,7 @@ public class MedicationService {
     }
 
     public List<MedicationsInfo> getAllActiveMedications() {
-        List<Medication> medications = medicationRepository.findMedicationsBy("A");
+        List<Medication> medications = medicationRepository.findMedicationsBy(Status.ACTIVE);
         return medicationMapper.toMedicationsInfos(medications);
     }
 

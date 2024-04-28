@@ -19,8 +19,6 @@ public interface DoctorPatientRepository extends JpaRepository<DoctorPatient, In
     @Query("select d from DoctorPatient d where d.doctor.id = :doctorId and d.patient.id = :patientId")
     DoctorPatient findPatientBy(Integer doctorId);
 
-
-
     @Transactional
     @Modifying
     @Query("delete from DoctorPatient d where d.doctor.id = :doctorId and d.patient.id = :patientId")

@@ -37,7 +37,7 @@ public class PatientService {
     @Transactional
     public void patientDoctorRelationshipResponse(Integer doctorPatientId, Boolean hasAccepted) {
         DoctorPatient doctorPatient = doctorPatientRepository.getReferenceById(doctorPatientId);
-        User user = userRepository.getReferenceById(doctorPatientId);
+        User user = userRepository.getReferenceById(doctorPatient.getPatient().getId());
         user.setStatus(Status.ACTIVE);
         userRepository.save(user);
 
