@@ -64,7 +64,7 @@ public class DoctorService {
         User doctor = userRepository.getReferenceById(doctorId);
         doctorPatient.setDoctor(doctor);
         User patient = userRepository.getReferenceById(patientId);
-        patient.setStatus(Status.ACTIVE);
+        patient.setStatus(Status.PENDING);
         userRepository.save(patient);
         doctorPatient.setPatient(patient);
         doctorPatient.setStatus(Status.PENDING);
