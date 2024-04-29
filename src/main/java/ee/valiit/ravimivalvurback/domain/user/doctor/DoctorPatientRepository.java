@@ -16,16 +16,17 @@ public interface DoctorPatientRepository extends JpaRepository<DoctorPatient, In
     @Query("select d.patient.id from DoctorPatient d where d.doctor.id = :doctorId")
     List<Integer> findPatientsIdBy(Integer doctorId);
 
-    @Query("select d from DoctorPatient d where d.doctor.id = :doctorId and d.patient.id = :patientId")
-    DoctorPatient findPatientBy(Integer doctorId);
+//    @Query("select d from DoctorPatient d where d.doctor.id = :doctorId and d.patient.id = :patientId")
+//    DoctorPatient findPendingPatientBy(Integer doctorId);
 
     @Transactional
     @Modifying
     @Query("delete from DoctorPatient d where d.doctor.id = :doctorId and d.patient.id = :patientId")
     void deleteFromTableBy(Integer doctorId, Integer patientId);
 
-    @Query("select d from DoctorPatient d where d.patient.id = :patientId and d.patient.status = :status")
-    DoctorPatient findPatientBy(Integer patientId, String status);
+    @Query("select d from DoctorPatient d where d.patient.id = :patientId and d.status = :status")
+    DoctorPatient findPendingPatientBy(Integer patientId, String status);
+
 
 
 }
